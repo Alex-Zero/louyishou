@@ -1,0 +1,348 @@
+page {
+    background: #f4f4f4;
+    min-height: 100%;
+}
+
+.container {
+    background: #f4f4f4;
+    min-height: 100%;
+}
+
+.swiper {
+    width: 100%;
+    position: relative;
+    height: 300rpx;
+}
+
+.swiper swiper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper .a {
+    width: 100%;
+    height: 300rpx;
+}
+
+.swiper image {
+    width: 100%;
+    height: 100%;
+}
+
+.view-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 156rpx;
+    height: 58rpx;
+    line-height: 58rpx;
+    font-size: 24rpx;
+}
+
+.ad {
+    width: 100%;
+    height: 65rpx;
+    line-height: 65rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 30rpx;
+}
+
+.ad text {
+    padding-left: 20rpx;
+}
+
+.fb-type {
+    height: 104rpx;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+
+.fb-type .type-label {
+    height: 36rpx;
+    flex: 1;
+    color: #b4282d;
+    font-size: 28rpx;
+}
+
+.fb-type .type-icon {
+    height: 36rpx;
+    width: 36rpx;
+}
+
+.fb-body {
+    width: 100%;
+    background: #fff;
+    height: 200rpx;
+    padding: 18rpx 30rpx 64rpx 30rpx;
+}
+
+.fb-body .content {
+    width: 100%;
+    height: 100%;
+    color: #333;
+    line-height: 40rpx;
+    font-size: 28rpx;
+}
+
+.fb-body .text-count {
+    padding-top: 17rpx;
+    line-height: 30rpx;
+    float: right;
+    color: #666;
+    font-size: 24rpx;
+}
+
+.fb-mobile {
+    height: 162rpx;
+    width: 100%;
+}
+
+.uploader {
+    height: 58rpx;
+    width: 100%;
+    padding: 0 10rpx;
+    line-height: 33rpx;
+}
+
+.uploader .a {
+    display: block;
+    float: left;
+    color: #7f7f7f;
+    font-size: 24rpx;
+}
+
+.uploader .b {
+    color: #7f7f7f;
+    font-size: 24rpx;
+    display: block;
+    float: right;
+}
+
+.fb-mobile .label {
+    height: 58rpx;
+    width: 100%;
+    padding-top: 14rpx;
+    padding-bottom: 11rpx;
+    color: #7f7f7f;
+    font-size: 24rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    line-height: 33rpx;
+}
+
+.fb-mobile .mobile-box {
+    height: 104rpx;
+    width: 100%;
+    color: #333;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    font-size: 24rpx;
+    background: #fff;
+    position: relative;
+}
+
+.fb-mobile .mobile-box input {
+    width: 75%;
+}
+
+.fb-mobile .mobile {
+    position: absolute;
+    top: 27rpx;
+    left: 30rpx;
+    height: 50rpx;
+    width: 100%;
+    color: #333;
+    line-height: 50rpx;
+    font-size: 28rpx;
+}
+
+.fb-mobile .info {
+    display: flex;
+    flex-direction: row;
+    height: 250rpx;
+}
+
+.fb-mobile .info .l,.fb-mobile .info .r {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    align-items: center;
+}
+
+.fb-mobile .desc {
+    display: flex;
+    flex-direction: row;
+    height: 250rpx;
+}
+
+.clear-icon {
+    position: absolute;
+    top: 43rpx;
+    right: 30rpx;
+    width: 28rpx;
+    height: 28rpx;
+    z-index: 999999;
+}
+
+.get {
+    position: absolute;
+    top: 25rpx;
+    right: 30rpx;
+    height: 54rpx;
+    font-size: 24rpx;
+    line-height: 54rpx;
+    color: #fff;
+    background: #b4282d;
+    padding: 0 20rpx;
+}
+
+.fb-btn {
+    width: 100%;
+    height: 98rpx;
+    line-height: 98rpx;
+    background: #b4282d;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-radius: 0;
+    color: #fff;
+    font-size: 28rpx;
+}
+
+.feedback-textarea {
+    width: 100%;
+    min-height: 300rpx;
+    font-size: 30rpx;
+    padding: 20rpx;
+    border-bottom: 1px solid #e4e6e6;
+    margin-bottom: 40rpx;
+}
+
+.feedback-submit {
+    margin: 0 30rpx;
+    background: #1296db;
+    color: #fff;
+}
+
+.info {
+    width: 100%;
+    color: #fff;
+    background: #fff;
+}
+
+.info .info-title {
+    background: #b4282d;
+    padding: 20rpx 24rpx;
+}
+
+.info .info-title .info-img {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 120rpx;
+}
+
+.info .info-block {
+    padding: 18rpx 20rpx;
+    color: #fff;
+}
+
+.info .info-block .info-up text {
+    font-size: 13pt;
+    color: #fff;
+}
+
+.info .info-block .info-bottom {
+    color: #fff;
+}
+
+.info-big {
+    font-size: 13pt;
+}
+
+.info .info-content {
+    width: 100%;
+    padding-top: 22rpx;
+}
+
+.info .info-content .info-left {
+    width: 50%;
+}
+
+.info .info-content .info-right {
+    width: 50%;
+    margin-top: 24rpx;
+}
+
+.info .info-content .info-left .info-label {
+    padding-bottom: 40rpx;
+}
+
+.info-label .info-first {
+    margin-bottom: 24rpx;
+}
+
+.info-right .info-btn {
+    width: 120rpx;
+    height: 70rpx;
+    border: 1rpx #e3e3e3 solid;
+    border-radius: 10rpx;
+    float: right;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 13pt;
+}
+
+.info .info-title .upgrade {
+    height: 75rpx;
+    line-height: 75rpx;
+}
+
+.list {
+    background-color: #fff;
+    width: 100%;
+}
+
+.list .border-bottom {
+    border-bottom: 1rpx #e3e3e3 solid;
+}
+
+.list .border-between {
+    border-left: 1rpx #e3e3e3 solid;
+    border-right: 1rpx #e3e3e3 solid;
+}
+
+.list .item {
+    width: 33.3333%;
+    height: 220rpx;
+}
+
+.list .item .list-img {
+    width: 100%;
+    margin-top: 40rpx;
+    text-align: center;
+}
+
+.list .item .list-img .img {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.list .item .list-content {
+    color: #666;
+    margin-top: 13rpx;
+}
+
+.list-red {
+    color: #ff4544;
+}

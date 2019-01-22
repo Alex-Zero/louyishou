@@ -1,0 +1,31 @@
+<view class="container">
+    <view class="search">
+        <navigator class="input" url="/meike_mall/pages/search/search">
+            <image class="icon"></image>
+            <text class="txt">商品搜索, 共{{goodsCount.nums}}款好物</text>
+        </navigator>
+    </view>
+    <view class="catalog">
+        <scroll-view class="nav" scrollY="true">
+            <view bindtap="switchCate" class="item {{currentCategory.id==item.id?'active':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{navList}}" wx:key="index">{{item.name}}</view>
+        </scroll-view>
+        <scroll-view class="cate" scrollY="true">
+            <navigator class="banner" url="url">
+                <image class="image" mode="aspectFill" src="{{currentCategory.wap_banner_url}}"></image>
+            </navigator>
+            <view class="hd">
+                <text class="line"></text>
+                <text class="txt">{{currentCategory.front_name}}</text>
+                <text class="line"></text>
+            </view>
+            <view class="bd">
+                <navigator class="item {{(index+1)%3==0?'last':''}}" hoverClass="none" url="../category/category?fid={{currentCategory.id}}&sid={{item.id}}" wx:for="{{currentCategory.subCategoryList}}">
+                    <image class="icon" mode="aspectFill" src="{{item.wap_banner_url}}"></image>
+                    <text class="txt">{{item.name}}</text>
+                </navigator>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<import src="../template/footer.wxml"></import>
+<template is="footer" data="{{tabbar:tabbar,curIdx:curIdx,tabColor:tabColor}}"></template>

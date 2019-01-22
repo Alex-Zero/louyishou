@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="small_image_text" style="border-top:20rpx solid #f4f4f4">
+        <image src="../../resource/images/kefu1.png"></image>
+        <button class="view-column" hoverClass="none" openType="contact">
+            <view class="title">官方客服
+      </view>
+            <view class="msg">如有疑问，您可以联系客服进行咨询</view>
+        </button>
+    </view>
+</view>
+<import src="../template/footer.wxml"></import>
+<template is="footer" data="{{tabbar:tabbar,curIdx:curIdx,tabColor:tabColor}}"></template>

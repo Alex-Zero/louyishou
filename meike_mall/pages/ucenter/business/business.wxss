@@ -1,0 +1,475 @@
+.container {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 50rpx;
+}
+
+page {
+    width: 100%;
+}
+
+.body {
+    width: 100%;
+    height: 360rpx;
+}
+
+.body image {
+    width: 100%;
+    height: 360rpx;
+}
+
+.banner {
+    width: 100%;
+    height: 360rpx;
+}
+
+.newest_content {
+    width: 80%;
+    height: 50rpx;
+    float: left;
+    line-height: 50rpx;
+    margin-left: 10rpx;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.zanwu {
+    line-height: 50rpx;
+    font-size: 24rpx;
+    text-align: center;
+    color: #333;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50rpx;
+}
+
+.selleryg {
+    width: 100%;
+    height: 50rpx;
+}
+
+.swiper-container {
+    position: relative;
+}
+
+.swiper-container .swiper {
+    height: 360rpx;
+}
+
+.swiper-container .swiper .img {
+    width: 100%;
+    height: 100%;
+}
+
+.dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20rpx;
+    display: flex;
+    width: 238rpx;
+    margin: auto;
+    border-radius: 10rpx;
+    height: 20rpx;
+    justify-content: center;
+}
+
+.dot {
+    margin: 4rpx 8rpx;
+    width: 30rpx;
+    height: 6rpx;
+    background: rgb(255,255,255);
+    border: rgb(218,69,70) solid 1rpx;
+    border-radius: 8rpx;
+    transition: all 0.6s;
+}
+
+.active {
+    width: 30rpx;
+    background: #f80;
+}
+
+.searchbox {
+    height: 116rpx;
+    padding: 0 30rpx;
+    background-color: white;
+    position: relative;
+}
+
+.input {
+    font-size: 26rpx;
+    color: #666;
+    height: 64rpx;
+    border: 5rpx solid #ff4847;
+    width: 483rpx;
+    position: absolute;
+    top: 26rpx;
+    padding-left: 40rpx;
+    border-radius: 37rpx 0 0 37rpx;
+}
+
+.search {
+    padding: 0;
+    width: 158rpx;
+    height: 72rpx;
+    color: white;
+    background-color: #ff4847;
+    position: absolute;
+    top: 26rpx;
+    left: 555rpx;
+    line-height: 74rpx;
+    border-radius: 0 37rpx 37rpx 0;
+}
+
+.ad {
+    margin-top: 24rpx;
+    height: 64rpx;
+    text-align: top;
+    background-color: white;
+}
+
+.ad-icon {
+    line-height: 64rpx;
+    margin-top: 15rpx;
+    margin-left: 30rpx;
+    float: left;
+    height: 35rpx;
+    width: 40rpx;
+}
+
+.adinfo {
+    margin-left: 32rpx;
+    float: left;
+    font-size: 26rpx;
+    margin-top: 13rpx;
+}
+
+.classify {
+    width: 100%;
+    background: #fff;
+}
+
+.classify swiper-item {
+    width: 100%;
+    height: 1005;
+}
+
+.classify swiper-item view {
+    width: 20%;
+    height: 185rpx;
+    float: left;
+    margin: 0 auto;
+}
+
+.classify swiper-item view .classify_logo {
+    width: 100%;
+    height: 130rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.classify swiper-item view .classify_logo image {
+    width: 83rpx;
+    height: 83rpx;
+    background: #fff;
+    margin-top: 25rpx;
+}
+
+.classify swiper-item view .classify_name {
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 24rpx;
+    text-align: center;
+}
+
+.join {
+    width: 100%;
+    height: 109rpx;
+    padding: 0 30rpx;
+    background-color: white;
+    margin-top: 20rpx;
+    position: relative;
+}
+
+.jion-img {
+    display: inline-block;
+    width: 79rpx;
+    height: 79rpx;
+    position: absolute;
+    top: 15rpx;
+}
+
+.jion-one {
+    font-size: 26rpx;
+    display: inline-block;
+    height: 30rpx;
+    line-height: 30rpx;
+    position: absolute;
+    top: 20rpx;
+    left: 133rpx;
+}
+
+.jion-two {
+    font-size: 26rpx;
+    display: inline-block;
+    height: 30rpx;
+    line-height: 30rpx;
+    position: absolute;
+    left: 133rpx;
+    top: 63rpx;
+}
+
+.join-name {
+    color: #ed4149;
+    font-size: 26rpx;
+}
+
+.jiony {
+    background-color: #ff6160;
+    border-radius: 10rpx;
+    width: 158rpx;
+    font-size: 26rpx;
+    height: 59rpx;
+    color: white;
+}
+
+.jionbo {
+    width: 500rpx;
+    height: 35rpx;
+    margin-left: 20rpx;
+    line-height: 35rpx;
+    font-size: 26rpx;
+}
+
+.marry {
+    width: 100%;
+    overflow-x: hidden;
+    height: auto;
+    background-color: white;
+    margin-top: 20rpx;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #eee;
+    text-align: center;
+}
+
+.luntext {
+    height: auto;
+    display: flex;
+    display: -webkit-box;
+    flex-direction: column;
+}
+
+.luntext_Item {
+    padding: 1rpx;
+    flex: 1;
+    margin-right: 20rpx;
+}
+
+.luntext_Item_text {
+    font-size: 30rpx;
+}
+
+.weui-navbar__item {
+    width: 33.3%;
+    padding: 15rpx 0;
+    position: relative;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+    color: #eb414a;
+    position: relative;
+}
+
+.zheline.block {
+    display: block;
+    background-color: #eb414a;
+}
+
+.weui-navbar__slider {
+    width: 120rpx;
+    height: 3rpx;
+    margin-top: 10rpx;
+}
+
+.weui-navbar {
+    background-color: white;
+    border-bottom: none;
+}
+
+.weui-tab__content {
+    padding-top: 0;
+}
+
+.weui-cells {
+    margin-top: 20rpx;
+}
+
+.zheline {
+    background-color: #eb414a;
+    height: 5rpx;
+    width: 74%;
+    position: absolute;
+    bottom: 0rpx;
+    left: 14%;
+    display: none;
+}
+
+.sellers {
+    padding: 0 30rpx;
+    height: 207rpx;
+    background-color: white;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.stars-wrapper {
+    padding: 0;
+}
+
+.star-full {
+    color: #ffcb00;
+}
+
+.star-empty {
+    color: #cbcbcb;
+}
+
+.sellers-img {
+    display: inline-block;
+    width: 158rpx;
+    height: 158rpx;
+    position: absolute;
+    top: 25rpx;
+}
+
+.sellersname {
+    position: absolute;
+    top: 26rpx;
+    left: 219rpx;
+    font-size: 30rpx;
+    width: 420rpx;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.compone {
+    position: absolute;
+    height: 30rpx;
+    top: 70rpx;
+    left: 219rpx;
+    width: 400rpx;
+    font-size: 26rpx;
+    color: #808080;
+}
+
+.compone1 {
+    position: absolute;
+    top: 108rpx;
+    left: 219rpx;
+    width: 400rpx;
+    font-size: 24rpx;
+    color: #808080;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.componeimg {
+    width: 20rpx;
+    height: 30rpx;
+}
+
+.hot {
+    position: absolute;
+    top: 135rpx;
+    left: 444rpx;
+    font-size: 26rpx;
+    color: #808080;
+}
+
+.starbox {
+    display: inline-block;
+    height: 32rpx;
+    width: 200rpx;
+    position: absolute;
+    top: 137rpx;
+    left: 219rpx;
+}
+
+.star {
+    float: left;
+    width: 35rpx;
+    height: 32rpx;
+}
+
+.distance {
+    position: absolute;
+    top: 42rpx;
+    right: 30rpx;
+    text-align: center;
+    font-size: 20rpx;
+    background: #eee;
+    border-radius: 5rpx;
+    color: #333;
+    padding: 0 10rpx;
+}
+
+.store {
+    width: 95%;
+    height: 200rpx;
+    background: #fff;
+    margin: 0 auto 0;
+}
+
+.store_img {
+    width: 25%;
+    height: 100%;
+}
+
+.store_info {
+    width: 75%;
+    height: 80%;
+    margin-top: 20rpx;
+}
+
+.store_img image {
+    width: 90%;
+    height: 150rpx;
+}
+
+.store_info>view {
+    width: 100%;
+    height: 53rpx;
+}
+
+.store_info>view:nth-child(1) {
+    line-height: 60rpx;
+    font-size: 30rpx;
+    text-indent: 15rpx;
+    color: #333;
+}
+
+.store_info>view:nth-child(2) {
+    line-height: 53rpx;
+    font-size: 26rpx;
+    text-indent: 55rpx;
+    color: #333;
+}
+
+.store_info>view:nth-child(3) {
+    line-height: 53rpx;
+    font-size: 26rpx;
+    text-indent: 55rpx;
+    color: #333;
+}
+
+.store_icon {
+    width: 30rpx;
+    height: 30rpx;
+    left: 15rpx;
+}

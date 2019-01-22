@@ -1,0 +1,6 @@
+<view style="position:fixed;left:0;top:0;width:{{windowWidth}}px;height:{{windowHeight}}px;background:#f4f4f4;z-index:6000;align-items:center;display:flex;" wx:if="{{loading}}">
+    <view style="width:250rpx;height:250rpx;border-radius:8rpx;align-items:center;display:flex;background:#d9d9d9;margin:0 auto;flex-direction:column">
+        <image src="../../../resource/images/bars.svg" style="width:120rpx;height:120rpx;margin:0 auto;margin-top:30rpx;"></image>
+        <view style="color:#fff;font-size:26rpx;height:50rpx;line-height:50rpx;margin-top:30rpx;">正在登录</view>
+    </view>
+</view>

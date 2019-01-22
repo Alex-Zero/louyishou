@@ -1,0 +1,9 @@
+<view class="container">
+    <view class="no-tuan">
+        <view class="c">
+            <image src="../../../resource/images/cart.png"></image>
+            <text>您还没有过拼团哦</text>
+        </view>
+        <button>去拼团</button>
+    </view>
+</view>

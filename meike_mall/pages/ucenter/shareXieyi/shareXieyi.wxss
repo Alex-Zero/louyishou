@@ -1,0 +1,15 @@
+page {
+    background: #fff;
+}
+
+.container {
+    background: #fff;
+    padding: 0 30rpx;
+}
+
+.content {
+    width: 100%;
+    height: auto;
+    font-size: 0;
+    margin-top: 30rpx;
+}

@@ -1,0 +1,35 @@
+<import src="../../common/common.wxml"></import>
+<view class="container">
+    <view class="body">
+        <image mode="aspectFill" src="{{sysinfo.business_image}}"></image>
+    </view>
+    <swiper circular="true" class="classify" duration="600" indicatorActiveColor="#b4282d" indicatorColor="#ccc" indicatorDots="{{dots}}" interval="3000" style="height:{{height}}rpx;margin-top:20rpx;margin-bottom:20rpx;">
+        <swiper-item wx:for="{{nav}}">
+            <view bindtap="store_type_id" data-id="{{item.id}}" data-name="{{item.type_name}}" data-sid="{{item.sid}}" wx:for="{{item}}" wx:key="{{item.value}}">
+                <view class="classify_logo">
+                    <image class="ab udlr" mode="aspectFill" src="{{item.img}}"></image>
+                </view>
+                <view class="classify_name">{{item.type_name}}</view>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view wx:for="{{storeList}}">
+        <view bindtap="info" class="sellers" data-id="{{item.id}}">
+            <image class="sellers-img" data-id="{{item.id}}" mode="aspectFill" src="{{item.logo}}"></image>
+            <text class="sellersname" data-id="{{item.id}}">{{item.storename}}</text>
+            <view class="compone" data-id="{{item.id}}">
+                <template is="allStars" data="{{stars:item.score,num:item.num}}"></template>
+            </view>
+            <text class="distance">{{item.distance}}km</text>
+            <i class="iconfont icon-right" style="position: absolute;top: 120rpx;right: 30rpx;font-size:40rpx;color:#ccc"></i>
+            <view class="compone1" data-id="{{item.id}}">
+                <view style="overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
+                    <i class="iconfont icon-location" style="margin-right:5rpx;font-size:28rpx"></i>{{item.address}}</view>
+            </view>
+        </view>
+        <view class="sellers rel hot_store" style="width:100%;height:350rpx;padding:0" wx:if="{{storeList.length==0}}">
+            <image class="ab lr" mode="aspectFill" src="../image/tie2.png" style="width:400rpx;height:300rpx;"></image>
+            <view class="ab zanwu">暂无商家</view>
+        </view>
+    </view>
+</view>

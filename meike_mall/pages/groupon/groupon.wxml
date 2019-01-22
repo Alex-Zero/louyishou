@@ -1,0 +1,122 @@
+<scroll-view class="container" scrollY="true">
+    <block wx:if="{{!openAttr}}">
+        <import src="../../lib/wxParse/wxParse.wxml"></import>
+        <view>
+            <swiper autoplay="true" circular="true" class="goodsimgs" duration="1000" indicatorActiveColor="#fff" indicatorColor="#ccc" indicatorDots="true" interval="3000">
+                <swiper-item wx:for="{{gallery}}" wx:key="{{item.id}}">
+                    <image backgroundSize="cover" src="{{item.img_url}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="service-policy">
+                <text style="width:44%;">5人团·已团3302件</text>
+                <text>距结束剩</text>
+                <view class="timer" style="position:absolute;right:31.25rpx;">
+                    <text class="timer-num">16</text>
+                    <text class="timer-split">时</text>
+                    <text class="timer-num">23</text>
+                    <text class="timer-split">分</text>
+                    <text class="timer-num">49</text>
+                    <text class="timer-split">秒</text>
+                </view>
+            </view>
+            <view class="goods-info">
+                <view class="c">
+                    <text class="name">{{goods.name||'自然氧吧'}}</text>
+                    <text class="desc">{{goods.goods_brief||'亲近自然，呼吸最新鲜的空气'}}</text>
+                    <text class="price">￥{{goods.retail_price|'765'}}</text>
+                    <view class="brand" wx:if="{{brand.name}}">
+                        <navigator url="../brandDetail/brandDetail?id={{brand.brandId}}">
+                            <text>{{brand.name}}</text>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="switchAttrPop" class="section-nav section-attr">
+                <view class="t">请选择规格数量</view>
+                <image backgroundSize="cover" class="i" src="../../resource/images/address_right.png"></image>
+            </view>
+            <view class="section-nav1 section-act">
+                <view class="t">
+                    <view class="label">5人正在拼团，可直接参与</view>
+                </view>
+                <image backgroundSize="cover" class="i" src="../../resource/images/address_right.png"></image>
+            </view>
+            <swiper autoplay="true" circular="true" class="grouping" displayMultipleItems="2" interval="3000" vertical="true">
+                <swiper-item wx:for="{{ongoing}}" wx:key="{{item.id}}">
+                    <view bindtap="notice" class="item" data-id="{{item.id}}">
+                        <image src="{{item.avatar}}"></image>
+                        <view class="right">
+                            <text>{{item.nickname}}</text>
+                            <text>还差{{item.rnum}}人成团，剩余{{clock}}结束</text>
+                        </view>
+                        <view class="join">
+              去参团
+            </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+            <view class="goods-attr">
+                <view class="t">商品参数</view>
+                <view class="l">
+                    <view class="item" wx:for="{{attribute}}" wx:key="{{item.name}}">
+                        <text class="left">{{item.name}}</text>
+                        <text class="right">{{item.value}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="detail">
+                <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}"></template>
+            </view>
+            <view class="related-goods" wx:if="{{relatedGoods.length>0}}">
+                <view class="h">
+                    <view class="line"></view>
+                    <text class="title">店铺推荐</text>
+                </view>
+                <view class="b">
+                    <view class="item" wx:for="{{relatedGoods}}" wx:key="{{item.id}}">
+                        <navigator url="/pages/goods/goods?id={{item.id}}">
+                            <image backgroundSize="cover" class="img" src="{{item.list_pic_url}}"></image>
+                            <text class="name">{{item.name}}</text>
+                            <image src="../../resource/images/vipShow.png"></image>
+                            <text class="pin">已拼{{item.list_num}}件</text>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="attr-pop" wx:if="{{openAttr}}">
+        <view class="img-info">
+            <image class="img" src="http://ac-3yr0g9cz.clouddn.com/6e5176bd6545b72e130a.png"></image>
+            <view class="info">
+                <view class="c">
+                    <view class="p">价格：￥{{goods.retail_price}}</view>
+                    <view class="a" wx:if="{{productList.length>0}}">已选择：{{checkedSpecText}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="spec-con">
+            <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
+                <view class="name">{{item.name}}</view>
+                <view class="values">
+                    <view bindtap="clickSkuValue" class="value {{vitem.checked?'selected':''}}" data-name-id="{{vitem.specification_id}}" data-value-id="{{vitem.id}}" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}">{{vitem.value}}</view>
+                </view>
+            </view>
+            <view class="number-item">
+                <view class="name">数量</view>
+                <view class="selnum">
+                    <view bindtap="cutNumber" class="cut">-</view>
+                    <input class="number" disabled="true" type="number" value="{{number}}"></input>
+                    <view bindtap="addNumber" class="add">+</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-btn">
+        <view bindtap="closeAttrOrCollect" class="l l-collect {{openAttr?'back':''}}">
+            <image class="icon" src="{{collectBackImage}}"></image>
+        </view>
+        <view class="c">单买价￥765</view>
+        <view bindtap="addToCart" class="r">￥566开团</view>
+    </view>
+</scroll-view>

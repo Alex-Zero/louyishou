@@ -1,0 +1,33 @@
+<view class="info">
+    <view class="cate">
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==10?'hover':''}}" data-sid="10">
+      全部
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==1?'hover':''}}" data-sid="1">
+      待审核
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==2?'hover':''}}" data-sid="2">
+      已打款
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==3?'hover':''}}" data-sid="3">
+      无效
+    </view>
+    </view>
+    <view class="blank"></view>
+    <view>
+        <view class="info-no" wx:if="{{cash_list==''}}">暂无数据</view>
+        <block wx:else>
+            <view class="info-content" wx:for="{{cash_list}}">
+                <view class="info-label flex-row">
+                    <view class="info-left">
+                        <view class="info-up">{{item.log}}
+              </view>
+                        <view class="info-down">{{item.time}}</view>
+                    </view>
+                    <view class="info-right">
+                        <text style="color:#b4282d">-</text>{{item.total}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

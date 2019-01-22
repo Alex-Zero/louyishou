@@ -1,0 +1,24 @@
+<view class="container">
+    <view class="form-box">
+        <view class="form-item">
+            <input autoFocus bindinput="bindUsernameInput" class="username" placeholder="账号" value="{{username}}"></input>
+            <image catchtap="clearInput" class="clear" id="clear-username" src="/static/images/clear_input.png" wx:if="{{username.length>0}}"></image>
+        </view>
+        <view class="form-item">
+            <input password bindinput="bindPasswordInput" class="password" placeholder="密码" value="{{password}}"></input>
+            <image catchtap="clearInput" class="clear" id="clear-password" src="/static/images/clear_input.png" wx:if="{{password.length>0}}"></image>
+        </view>
+        <view class="form-item-code" wx:if="{{loginErrorCount>=3}}">
+            <view class="form-item code-item">
+                <input bindinput="bindCodeInput" class="code" placeholder="验证码" value="{{code}}"></input>
+                <image catchtap="clearInput" class="clear" id="clear-code" src="/static/images/clear_input.png" wx:if="{{code.length>0}}"></image>
+            </view>
+            <image class="code-img" src="https://dl.reg.163.com/cp?pd=yanxuan_web&pkid=SkeBZeG&random=1489903563234"></image>
+        </view>
+        <button bindtap="startLogin" class="login-btn" type="default">登录</button>
+        <view class="form-item-text">
+            <navigator class="register" url="../register/register">注册账号</navigator>
+            <navigator class="reset" url="../reset/reset">忘记密码</navigator>
+        </view>
+    </view>
+</view>

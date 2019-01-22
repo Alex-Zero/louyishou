@@ -1,0 +1,30 @@
+<view class="container">
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <view class="info">
+            <view class="a">
+                <text>可提金额</text>
+                <text style="color:#b4282d;padding-left:10rpx;font-size:34rpx;">{{open_total}}</text>
+            </view>
+            <view class="b">
+                <view style="height:65rpx;line-height:65rpx;font-size:28rpx">
+          提现金额
+        </view>
+                <view style="80rpx;line-height:80rpx;font-size:38rpx;display:flex;flex-direction:row;align-items:center;">
+          ￥<input bindinput="totalInput" name="total" type="number" value="{{total}}"></input>
+                </view>
+            </view>
+            <view class="c">
+                <text wx:if="{{cut<0}}">本月可提现剩余0次</text>
+                <text wx:else>本月提现剩余{{cut}}次</text>
+                <text bindtap="all" style="color:#b4282d;padding-left:20rpx;">全部提现</text>
+            </view>
+        </view>
+        <view class="fb-mobile" style="height:258rpx">
+            <view class="label">提现说明</view>
+            <view class="fb-body">
+                <view class="content" wx:for="{{desc}}">{{item.value}}</view>
+            </view>
+        </view>
+        <button class="fb-btn" formType="submit">提 交</button>
+    </form>
+</view>

@@ -1,0 +1,48 @@
+<import src="../../common/common.wxml"></import>
+<import src="../../../lib/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="swiper">
+        <swiper autoplay="true" circular="true" duration="600" indicatorActiveColor="#fff" indicatorColor="#ccc" indicatorDots="true" interval="8000">
+            <swiper-item wx:for="{{info.shuffling}}" wx:key="{{index}}">
+                <image mode="aspectFill" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="title">
+        <view class="a">{{info.storename}}</view>
+        <template is="stars" data="{{stars:info.score,num:info.num}}"></template>
+        <button class="b" openType="share">
+            <i class="iconfont icon-share" style="margin-right:5rpx;font-size:28rpx;"></i>分享</button>
+    </view>
+    <view class="title">
+        <i class="iconfont icon-location" style="margin-right:10rpx;"></i>
+        <text>{{info.address}}</text>
+        <button bindtap="nav" class="c">
+            <i class="iconfont icon-flag" style="margin-right:5rpx;font-size:28rpx;"></i>导航</button>
+    </view>
+    <view class="title" style="display:flex;flex-direction:row;">
+        <image mode="aspectFill" src="{{info.logo}}" style="width:90rpx;height:90rpx;"></image>
+        <view style="display:flex;flex-direction:column;padding-left:10rpx;">
+            <view>{{info.title}}</view>
+            <view style="color:#8a8c8e;font-size:24rpx;width:80%;">{{info.word}}</view>
+        </view>
+        <button bindtap="call" class="b">
+            <i class="iconfont icon-phone" style="margin-right:5rpx;font-size:28rpx;"></i>电话</button>
+    </view>
+    <view style="margin-top:20rpx;height:80rpx;line-height:80rpx;background:#fff;padding:0 30rpx;">
+        <i class="iconfont icon-number" style="margin-right:5rpx;font-size:28rpx;"></i>商家介绍</view>
+    <scroll-view class="content" style="padding:0 20rpx 20rpx 20rpx;">
+        <template is="wxParse" data="{{wxParseData:details.nodes}}"></template>
+    </scroll-view>
+</view>
+<view style="position:fixed;right:31.25rpx;bottom:200rpx;">
+    <button bindtap="index" style="background:#fff;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;">
+        <image src="../../../resource/images/index.png" style="width:45rpx;height:45rpx;margin-top:20rpx;"></image>
+    </button>
+</view>
+<view catchtouchmove="preventD" hidden="{{vipTips}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:500">
+    <view class="scroll_hb" style="position:relative;margin-top:150rpx;">
+        <image mode="aspectFill" src="../../../resource/images/businessvip.png" style="width:558rpx;height:717rpx;"></image>
+        <view bindtap="know" style="position:absolute;bottom:60rpx;z-index:1000;width:300rpx;height:70rpx;line-height:70rpx;color:#b4282d;border-radius:45rpx;background:#fbdc50;text-align:center">我知道了</view>
+    </view>
+</view>

@@ -1,0 +1,31 @@
+<view class="container">
+    <view class="brand-info">
+        <view class="name">
+            <image backgroundSize="cover" class="img" src="{{brand.app_list_pic_url}}"></image>
+            <view class="info-box">
+                <view class="info">
+                    <text class="txt">{{brand.name}}</text>
+                    <text class="line"></text>
+                </view>
+            </view>
+        </view>
+        <view class="desc">
+      {{brand.simple_desc}}
+    </view>
+    </view>
+    <view class="cate-item">
+        <view class="b">
+            <view class="item" wx:for="{{goodsList}}" wx:key="{{item.id}}">
+                <navigator hoverClass="none" url="../goods/goods?id={{item.id}}&mch_id={{mch_id}}">
+                    <image backgroundSize="cover" class="img" src="{{item.primary_pic_url}}"></image>
+                    <block wx:if="{{userInfo.is_people=='2'}}">
+                        <text class="span" wx:if="{{item.is_distribution=='1'}}">预估佣金 ￥{{item.fx_total}}</text>
+                    </block>
+                    <text class="name">{{item.name}}</text>
+                    <text class="price" style="color:{{sysinfo.color}}">￥{{item.members_price}}</text>
+                    <text class="vip_price">非会员价:￥{{item.retail_price}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

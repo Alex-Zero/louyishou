@@ -1,0 +1,10 @@
+<template name="footer">
+    <view style="position:fixed;bottom:0;height:90rpx;width:100%;background:{{tabColor.back_color}};z-index:5000;border-top:1px solid {{tabColor.top_color}};display:flex;flex-direction:row;justify-content: space-between;" wx:if="{{tabbar}}">
+        <navigator hoverClass="none" openType="redirect" style="width:{{100/tabbar.length}}%;text-align:center;display:flex;flex-direction:column" url="{{item.url}}?curIdx={{index}}" wx:for="{{tabbar}}" wx:key="this">
+            <image hidden="{{curIdx==index}}" mode="aspectFill" src="{{item.micon}}" style="width:55rpx;height:55rpx;margin:0 auto;"></image>
+            <image hidden="{{curIdx!=index}}" src="{{item.icon}}" style="width:55rpx;height:55rpx;margin:0 auto;"></image>
+            <view data-index="{{index}}" hidden="{{curIdx==index}}" style="font-size:22rpx;color:{{tabColor.font_ncolor}}">{{item.name}}</view>
+            <view data-index="{{index}}" hidden="{{curIdx!=index}}" style="font-size:22rpx;color:{{tabColor.font_ocolor}}">{{item.name}}</view>
+        </navigator>
+    </view>
+</template>

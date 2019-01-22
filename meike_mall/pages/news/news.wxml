@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="content">
+        <navigator hoverClass="none" url="../newsDetail/newsDetail?id={{item.id}}" wx:for="{{newsList}}">
+            <view class=" list-item {{item.type}} ">
+                <view class="list-item-left ">
+                    <text class="list-item-title ">{{item.title}}</text>
+                    <text class="list-item-time ">{{item.time}}</text>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>

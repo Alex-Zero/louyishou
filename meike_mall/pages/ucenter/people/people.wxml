@@ -1,0 +1,4 @@
+<view class="container">
+    <view style="width:500rpx;height:200rpx;background:#fff;display:flex;text-align:center;margin: 0 auto;">申请合伙人</view>
+    <view style="width:80%;height:200rpx;background:#fff;display:flex;">申请合伙店铺</view>
+</view>

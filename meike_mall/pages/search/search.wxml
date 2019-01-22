@@ -1,0 +1,43 @@
+<scroll-view class="container" style="height: 100%;">
+    <view class="search-header">
+        <view class="input-box">
+            <image class="icon" src="../../resource/images/search.png"></image>
+            <input bindconfirm="onKeywordConfirm" bindfocus="inputFocus" bindinput="inputChange" class="keywrod" confirmType="search" focus="true" name="input" placeholder="{{defaultKeyword.keyword}}" value="{{keyword}}"></input>
+            <image bindtap="clearKeyword" class="del" src="../../resource/images/clear.png" wx:if="{{keyword}}"></image>
+        </view>
+        <view bindtap="closeSearch" class="right">取消</view>
+    </view>
+    <view class="no-search" wx:if="{{!searchStatus}}">
+        <view class="serach-keywords search-history" wx:if="{{!keyword&&historyKeyword.length}}">
+            <view class="h">
+                <text class="title">历史记录</text>
+                <image bindtap="clearHistory" class="icon" src="../../resource/images/deleat.png"></image>
+            </view>
+            <view class="b">
+                <view bindtap="onKeywordTap" class="item" data-keyword="{{item.keyword}}" hoverClass="navigator-hover" wx:for="{{historyKeyword}}">{{item.keyword}}</view>
+            </view>
+        </view>
+        <scroll-view scrollY class="shelper-list" style="height:{{windowHeight}}px" wx:if="{{keyword}}">
+            <view bindtap="onKeywordTap" class="item" data-keyword="{{item.keywords}}" hoverClass="navigator-hover" wx:for="{{helpKeyword}}">{{item.keywords}}</view>
+        </scroll-view>
+    </view>
+    <view class="search-result" wx:if="{{searchStatus&&goodsList.length>0}}">
+        <view class="cate-item">
+            <view class="b">
+                <view class="item" wx:for="{{goodsList}}" wx:key="{{item.id}}">
+                    <navigator hoverClass="none" url="../goods/goods?id={{item.id}}&mch_id={{mch_id}}">
+                        <image backgroundSize="cover" class="img" src="{{item.primary_pic_url}}"></image>
+                        <text class="span" wx:if="{{item.promotion_desc}}">{{item.promotion_desc}}</text>
+                        <text class="name">{{item.name}}</text>
+                        <text class="price">￥{{item.members_price}}</text>
+                        <text class="vip_price">非会员价:￥{{item.retail_price}}</text>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="search-result-empty" wx:if="{{!goodsList.length&&searchStatus}}">
+        <image class="icon" src="../../resource/images/searchno.png"></image>
+        <text class="text">您寻找的商品还未上架</text>
+    </view>
+</scroll-view>

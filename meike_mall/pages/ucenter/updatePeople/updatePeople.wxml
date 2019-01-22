@@ -1,0 +1,47 @@
+<view class="container">
+    <view class="ad">
+        <i class="iconfont icon-align-left" style="font-size:30rpx;color:#b4282d"></i>
+        <text>您当前等级为</text>
+        <text style="color:#b4282d">{{partnerInfo.name}}</text>
+    </view>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <view class="fb-mobile">
+            <view class="label">选择合伙人等级</view>
+            <picker bindchange="bindPickerChange" range="{{array}}" value="{{index}}">
+                <view class="picker">
+                    <view class="fb-type">
+                        <view class="type-label">{{array[index]}}</view>
+                        <image class="type-icon" src="../../../resource/images/up.png"></image>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view class="fb-mobile" style="height:308rpx;">
+            <view class="label">费用及等级权限</view>
+            <view class="info">
+                <view class="l">
+                    <i class="iconfont icon-moneycollect-fill" style="font-size:80rpx;color:#ff6666"></i>
+                    <text style="font-size:24rpx">升级费用</text>
+                    <text style="font-size:24rpx;color:#b4282d">￥{{updataMoney}}</text>
+                </view>
+                <view class="l">
+                    <i class="iconfont icon-Dollar-circle-fill" style="font-size:80rpx;color:#e6ac00"></i>
+                    <text style="font-size:24rpx">商品收益</text>
+                    <text style="font-size:24rpx;color:#b4282d">后台实时查看</text>
+                </view>
+                <view class="r" wx:if="{{fxset.is_commission=='1'}}">
+                    <i class="iconfont icon-piechart-circle-fil" style="font-size:80rpx;color:#6666ff"></i>
+                    <text style="font-size:24rpx">提成比例</text>
+                    <text style="font-size:24rpx;color:#b4282d">一级:{{commission}}% 二级:{{commission2}}%</text>
+                </view>
+            </view>
+        </view>
+        <view class="fb-mobile" style="height:258rpx">
+            <view class="label">分销说明</view>
+            <view class="fb-body">
+                <textarea class="content" disabled="true" value="{{fxset.instructions}}"></textarea>
+            </view>
+        </view>
+        <button class="fb-btn" formType="submit">提 交</button>
+    </form>
+</view>

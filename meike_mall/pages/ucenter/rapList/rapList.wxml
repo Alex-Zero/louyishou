@@ -1,0 +1,24 @@
+<view class="info">
+    <view>
+        <view class="info-no" wx:if="{{runList==''}}">暂无数据</view>
+        <block wx:else>
+            <view class="info-content" wx:for="{{runList}}">
+                <view class="info-label flex-row">
+                    <view class="info-left">
+                        <view class="info-up">{{item.log}}</view>
+                        <view class="info-down">{{item.time}}</view>
+                    </view>
+                    <view class="info-right">
+                        <view class="info-up" style="color:#b4282d;font-weight:bold">
+                            <text style="color:#b4282d" wx:if="{{item.status==1}}">+</text>
+                            <text style="color:#b4282d" wx:if="{{item.status==2}}">-</text>{{item.total}}</view>
+                        <view class="info-down" wx:if="{{item.status==1}}">已提现</view>
+                        <view class="info-down" wx:if="{{item.status==2}}">转出</view>
+                        <view class="info-down" wx:elif="{{item.status==3}}">未提现</view>
+                        <view class="info-down" wx:elif="{{item.status==4}}">已使用</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

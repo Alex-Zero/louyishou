@@ -1,0 +1,52 @@
+page {
+    background: #f4f4f4;
+}
+
+.container {
+    width: 100%;
+}
+
+.label {
+    color: #b3b3b3;
+    font-size: 24rpx;
+    height: 58rpx;
+    line-height: 58rpx;
+    padding: 0 31.25rpx;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+    height: 68rpx;
+    line-height: 68rpx;
+    padding: 0 31.25rpx;
+    justify-content: space-between;
+}
+
+.info .a {
+    color: #b4282d;
+}
+
+.info .b text {
+    color: #b4282d;
+    padding-left: 10rpx;
+}
+
+.quyu {
+    background: #fff;
+    padding-right: 31.25rpx;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.quyu .city {
+    margin: 20rpx 0;
+    width: 29%;
+    height: 78rpx;
+    line-height: 78rpx;
+    text-align: center;
+    border: 1px solid #333;
+    margin-left: 31.25rpx;
+}

@@ -1,0 +1,302 @@
+<view class="container">
+    <view class="newtop" style="background:{{sysinfo.color}}"></view>
+    <view class="newtop1">
+        <view class="posi" wx:if="{{sysinfo.rap_show==1}}">
+            <view class="profile-info">
+                <image class="avatar" src="{{userInfo.avatar||'../../../resource/images/head.png'}}"></image>
+                <view class="info">
+                    <button class="name" wx:if="{{userInfo.nickname}}">
+                        <text style="width:80%;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;">{{userInfo.nickname}}</text>
+                    </button>
+                    <button bindtap="goLogin" class="name" wx:else>注册/登录</button>
+                    <button bindtap="phoneLimit" class="level" wx:if="{{phoneNumber=='****'&&userInfo.user_id==''}}">绑定手机号</button>
+                    <button bindgetphonenumber="getPhoneNumber" class="level" openType="getPhoneNumber" wx:if="{{phoneNumber=='****'&&userInfo.user_id!=''}}">绑定手机号</button>
+                    <button bindgetphonenumber="getPhoneNumber" class="level" openType="getPhoneNumber" wx:if="{{phoneNumber=='und****ed'}}">授权失败，请重试</button>
+                    <button class="level" wx:if="{{phoneNumber!='und****ed'&&phoneNumber!='****'}}">{{phoneNumber}}</button>
+                </view>
+                <view bindtap="qrcode" wx:if="{{userInfo.qrcode}}">
+                    <i class="iconfont icon-qrcode" style="font-size:65rpx;color:#333;"></i>
+                </view>
+            </view>
+            <view class="guajian">
+                <navigator hoverClass="none" style="width:50%;text-align:center" url="../rap/rap">
+                    <i class="iconfont icon-propertysafety" style="padding-right:10rpx;"></i>
+                    <text style="font-size:28rpx">资产：￥{{assets}}</text>
+                </navigator>
+                <navigator hoverClass="none" style="width:50%;text-align:center" url="../tohelp/tohelp">
+                    <i class="iconfont icon-hourglass" style="padding-right:10rpx;"></i>
+                    <text style="font-size:28rpx">待助力：{{rapNumber}}</text>
+                </navigator>
+            </view>
+        </view>
+        <view class="posi" wx:else>
+            <view class="profile-info" style="height:280rpx;">
+                <image class="avatar" src="{{userInfo.avatar||'../../../resource/images/head.png'}}"></image>
+                <view class="info">
+                    <button class="name" wx:if="{{userInfo.nickname}}">{{userInfo.nickname}}
+            <i class="iconfont icon-man" style="font-size:35rpx;padding-right:20rpx;color:#1296db" wx:if="{{userInfo.gender=='1'}}"></i>
+                        <i class="iconfont icon-woman" style="font-size:35rpx;padding-right:20rpx;color:#ff0066" wx:if="{{userInfo.gender=='2'}}"></i>
+                    </button>
+                    <button bindtap="goLogin" class="name" wx:else>登录/注册</button>
+                    <button bindgetphonenumber="getPhoneNumber" class="level" openType="getPhoneNumber" wx:if="{{phoneNumber=='****'}}">绑定手机号</button>
+                    <button bindgetphonenumber="getPhoneNumber" class="level" openType="getPhoneNumber" wx:if="{{phoneNumber=='und****ed'}}">授权失败，请重试</button>
+                    <button class="level" wx:if="{{phoneNumber!='und****ed'&&phoneNumber!='****'}}">{{phoneNumber}}</button>
+                </view>
+                <view bindtap="qrcode" wx:if="{{userInfo.qrcode}}">
+                    <i class="iconfont icon-qrcode" style="font-size:65rpx;color:#333;"></i>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="user-article">
+        <view class="order-class">
+            <navigator class="item-order" hoverClass="none" url="../order/order?id=0">
+                <view class="iconfont icon-accountbook" style="font-size:50rpx"></view>
+                <text class="item--order-text">待付款</text>
+            </navigator>
+            <navigator class="item-order" hoverClass="none" url="../order/order?id=1">
+                <view class="iconfont icon-car" style="font-size:50rpx"></view>
+                <text class="item--order-text">待发货</text>
+            </navigator>
+            <navigator class="item-order" hoverClass="none" url="../order/order?id=2">
+                <view class="iconfont icon-alert" style="font-size:50rpx"></view>
+                <text class="item--order-text">待收货</text>
+            </navigator>
+            <navigator class="item-order" hoverClass="none" url="../order/order">
+                <view class="iconfont icon-message" style="font-size:50rpx"></view>
+                <text class="item--order-text">全部</text>
+            </navigator>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <view bindtap="limit" hoverClass="none" wx:if="{{userInfo.ivcode==''}}">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-user" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的晒图</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <navigator hoverClass="none" wx:else>
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-user" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的晒图</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <view style="border-bottom:20rpx solid #eee;padding-bottom:20rpx;">
+        <view bindtap="limit" hoverClass="none" wx:if="{{userInfo.ivcode==''}}">
+            <view class="fansbox">
+                <image mode="aspectFill" src="{{sysinfo.fans_img}}"></image>
+            </view>
+        </view>
+        <navigator hoverClass="none" url="../applyPeople/applyPeople" wx:else>
+            <view class="fansbox">
+                <image mode="aspectFill" src="{{sysinfo.fans_img}}"></image>
+            </view>
+        </navigator>
+    </view>
+    <!-- <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <view bindtap="limit" hoverClass="none" wx:if="{{userInfo.ivcode==''}}">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-user" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的粉丝</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <navigator hoverClass="none" url="../myFans/myFans" wx:else>
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-user" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的粉丝</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view> -->
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <navigator hoverClass="none" bindtap='upgrade' wx:if="{{userInfo.ivcode!=''}}">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-user" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">会员升级</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+
+    <!-- 我的团队 -->
+    <block wx:if="{{userInfo.is_people=='0'&&userInfo.is_store=='0'&&userInfo.is_city=='0'&&userInfo.is_area=='0'}}">
+        <view class="weui-cells weui-cells_after-title" wx:if="{{userInfo.is_people=='0'||userInfo.is_store=='0'}}">
+            <navigator hoverClass="none" url="../shareTeam/shareTeam">
+                <view class="weui-cell weui-cell_access">
+                    <i class="iconfont icon-team" style="font-size:40rpx;padding-right:20rpx;"></i>
+                    <view class="weui-cell__bd" style="font-size:30rpx">我的团队</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </view>
+            </navigator>
+        </view>
+    </block>
+
+    <view class="weui-cells weui-cells_after-title" wx:if="{{userInfo.is_people=='1'||userInfo.is_store=='1'}}">
+        <view bindtap="tips" hoverClass="none">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-team" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的佣金</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:elif="{{userInfo.is_people=='2'||userInfo.is_store=='2'}}">
+        <navigator hoverClass="none" url="../partner/partner">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-team" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的佣金</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:elif="{{userInfo.is_people=='3'||userInfo.is_store=='3'}}">
+        <navigator hoverClass="none" url="../perfect/perfect">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-team" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的佣金</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:if="{{userInfo.is_area>0}}">
+        <view bindtap="errorPeople" hoverClass="none">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-block" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的佣金</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{userInfo.is_people=='0'&&userInfo.is_store=='0'&&userInfo.is_city=='0'&&userInfo.is_area=='0'}}">
+        <view class="weui-cells weui-cells_after-title" wx:if="{{userInfo.is_people=='0'||userInfo.is_store=='0'}}">
+            <view bindtap="limit" hoverClass="none" wx:if="{{userInfo.ivcode==''}}">
+                <view class="weui-cell weui-cell_access">
+                    <i class="iconfont icon-team" style="font-size:40rpx;padding-right:20rpx;"></i>
+                    <view class="weui-cell__bd" style="font-size:30rpx">我的佣金</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </view>
+            </view>
+            <navigator hoverClass="none" url="../applyPeople/applyPeople" wx:else>
+                <view class="weui-cell weui-cell_access">
+                    <i class="iconfont icon-team" style="font-size:40rpx;padding-right:20rpx;"></i>
+                    <view class="weui-cell__bd" style="font-size:30rpx">我的佣金</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </view>
+            </navigator>
+        </view>
+    </block>
+    <!-- <view class="weui-cells weui-cells_after-title" style="border-top:20rpx solid #f4f4f4;border-bottom:1rpx solid #eee;">
+        <navigator hoverClass="none" url="../address/address">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-location" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">我的地址</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;" wx:if="{{sysinfo.store==0}}">
+        <navigator hoverClass="none" url="../business/business">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-shop" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">同城商圈</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <navigator hoverClass="none" url="../coupon/coupon">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-tags" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">优惠券</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view> -->
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <button class="weui-cell weui-cell_access" openType="feedback" style="text-align:left;background:rgba(0,0,0,0);height:100rpx;">
+            <i class="iconfont icon-edit" style="font-size:40rpx;padding-right:20rpx;"></i>
+            <view class="weui-cell__bd" style="font-size:30rpx">意见反馈</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </button>
+    </view>
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <navigator hoverClass="none" url="../help/help">
+            <view class="weui-cell weui-cell_access">
+                <i class="iconfont icon-question" style="font-size:40rpx;padding-right:20rpx;"></i>
+                <view class="weui-cell__bd" style="font-size:30rpx">帮助中心</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <button class="weui-cell weui-cell_access" openType="openSetting" style="text-align:left;background:rgba(0,0,0,0);height:100rpx;">
+            <i class="iconfont icon-setting" style="font-size:40rpx;padding-right:20rpx;"></i>
+            <view class="weui-cell__bd" style="font-size:30rpx">设置</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </button>
+    </view>
+    <view class="weui-footer weui-footer_fixed-bottom" style="margin:40rpx 0 120rpx 0;">
+        <view class="weui-footer__links">
+            <view class="weui-footer__link">{{sysinfo.web}}</view>
+        </view>
+        <view class="weui-footer__links" wx:if="{{sysinfo.weburl!=''}}">
+            <navigator class="weui-footer__link" url="../web/web?state=0&weburl={{sysinfo.weburl}}">{{sysinfo.webword}}</navigator>
+        </view>
+        <view class="weui-footer__text">{{sysinfo.copyright}}</view>
+    </view>
+</view>
+<view catchtouchmove="preventD" hidden="{{qrcode}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:500">
+    <view style="width:100%;display:flex;justify-content: center;margin-top:150rpx;">
+        <canvas canvasId="myCanvas" style="width:550rpx;height:606rpx"></canvas>
+    </view>
+    <view style="display:flex;flex-direction:row;margin-top:40rpx;color:#fff;height:90rpx;line-height:90rpx;justify-content: center;width:100%">
+        <view bindtap="close" style="width:230rpx;border-radius:45rpx 0 0 45rpx;background:#333;text-align:center;color:#fff">取消</view>
+        <view bindtap="saveImage" style="width:230rpx;border-radius:0 45rpx 45rpx 0;background:#b4282d;text-align:center;color:#fff">保存</view>
+    </view>
+</view>
+<view catchtouchmove="preventD" hidden="{{people}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:500">
+    <view style="display:flex;flex-direction:row;margin-top:240rpx;color:#fff;height:300rpx;justify-content: center;width:100%;">
+        <view style="width:600rpx;height:300rpx;background:#fff;border-radius:10rpx;text-align:center">
+            <view style="height:90rpx;line-height:90rpx;font-size:30rpx;font-weight:bold;border-bottom:1px solid #eee">选择申请的合伙人类型</view>
+            <view style="display:flex;flex-direction:row;width:100%;margin-top:20rpx;">
+                <view bindtap="applyPeople" style="display:flex;flex-direction:column;width:50%;border-right:1px solid #eee;padding:10rpx 0">
+                    <image src="../../../resource/images/people.png" style="width:90rpx;height:90rpx;margin:0 auto"></image>
+                    <text style="padding-top:30rpx;">申请合伙人</text>
+                </view>
+                <view bindtap="applyStore" style="display:flex;flex-direction:column;width:50%;padding:10rpx 0">
+                    <image src="../../../resource/images/store.png" style="width:90rpx;height:90rpx;margin:0 auto"></image>
+                    <text style="padding-top:30rpx;">申请合伙店铺</text>
+                </view>
+            </view>
+            <view style="width:100%;display:flex;justify-content: center;margin-top:100rpx;">
+                <i bindtap="closePeople" class="iconfont icon-close-circle-fill" style="color:#fff;font-size:75rpx"></i>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="preventD" hidden="{{agent}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:500">
+    <view style="display:flex;flex-direction:row;margin-top:240rpx;color:#fff;height:300rpx;justify-content: center;width:100%;">
+        <view style="width:600rpx;height:300rpx;background:#fff;border-radius:10rpx;text-align:center">
+            <view style="height:90rpx;line-height:90rpx;font-size:30rpx;font-weight:bold;border-bottom:1px solid #eee">选择申请的城市代理类型</view>
+            <view style="display:flex;flex-direction:row;width:100%;margin-top:20rpx;">
+                <view bindtap="applyCity" style="display:flex;flex-direction:column;width:50%;border-right:1px solid #eee;padding:10rpx 0">
+                    <image src="../../../resource/images/people.png" style="width:90rpx;height:90rpx;margin:0 auto"></image>
+                    <text style="padding-top:30rpx;">申请城市代理</text>
+                </view>
+                <view bindtap="applyArea" style="display:flex;flex-direction:column;width:50%;padding:10rpx 0">
+                    <image src="../../../resource/images/store.png" style="width:90rpx;height:90rpx;margin:0 auto"></image>
+                    <text style="padding-top:30rpx;">申请区域代理</text>
+                </view>
+            </view>
+            <view style="width:100%;display:flex;justify-content: center;margin-top:100rpx;">
+                <i bindtap="closeAgent" class="iconfont icon-close-circle-fill" style="color:#fff;font-size:75rpx"></i>
+            </view>
+        </view>
+    </view>
+</view>
+<import src="../../template/footer.wxml"></import>
+<template is="footer" data="{{tabbar:tabbar,curIdx:curIdx,tabColor:tabColor}}"></template>

@@ -1,0 +1,49 @@
+<view class="container">
+    <view class="top">
+        <view class="a">
+      已存入账户，请尽快提现
+    </view>
+        <view class="b">提现在
+      <text style="color:#b4282d">{{wxTimer}}</text> 后过期</view>
+        <view class="c">正在提现
+      <text style="color:#b4282d">￥</text>
+            <text style="color:#b4282d;font-size:50rpx;font-weight:bold;">{{itr}}</text>
+            <block wx:if="{{htr!=0}}">
+                <text>，已提</text>
+                <text style="color:#b4282d">￥</text>
+                <text style="color:#b4282d;font-size:50rpx;font-weight:bold;">{{htr}}</text>
+            </block>
+        </view>
+        <progress active activeColor="#b4282d" percent="{{progress}}"></progress>
+        <form bindsubmit="formSubmit" reportSubmit="true">
+            <button formType="submit" openType="share" style="height:90rpx;line-height:90rpx;border-radius:45rpx;background:#b4282d;color:#fff;margin-top:50rpx;width:90%">分享好友助力 立即提现</button>
+        </form>
+        <view class="d">邀请
+      <text wx:if="{{rap_price<=20}}">1~2</text>
+            <text wx:elif="{{rap_price<=30&&rap_price>20}}">3~4</text>
+            <text wx:elif="{{rap_price<=40&&rap_price>30}}">4~5</text>
+            <text wx:elif="{{rap_price<=50&&rap_price>40}}">5~6</text>
+            <text wx:elif="{{rap_price<=60&&rap_price>50}}">6~7</text>
+            <text wx:else>7~8</text>名新用户即可完成提现
+      <text bindtap="rapAbout" style="text-decoration: underline;color:#1296db">了解更多</text>
+        </view>
+    </view>
+    <view class="bottom">
+        <view class="a">TA们刚刚提现了</view>
+        <view class="info-content">
+            <view class="info-label" wx:for="{{newList}}">
+                <view class="info-up flex-y-center">
+                    <view class="info-img">
+                        <image class="img" src="{{item.avatar}}"></image>
+                    </view>
+                    <view class="info-text">
+                        <view class="info-name">{{item.nickname}}</view>
+                    </view>
+                    <view style="position:absolute;right:31.25rpx">{{item.info}}提现了
+              <text style="color:#b4282d;font-weight:bold">￥{{item.rap_price}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

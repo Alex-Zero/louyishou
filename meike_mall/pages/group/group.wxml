@@ -1,0 +1,36 @@
+<view class="container">
+    <view class="group-title">
+        <view>
+            <text bindtap="changeType" class="active" data-type="group" wx:if="{{active==0}}">三人团</text>
+            <text bindtap="changeType" data-type="group" wx:else>三人团</text>
+            <text bindtap="changeType" class="active" data-type="moreGroup" wx:if="{{active==1}}">多人团</text>
+            <text bindtap="changeType" data-type="moreGroup" wx:else>多人团</text>
+        </view>
+    </view>
+    <view class="group-goods">
+        <view class="goods">
+            <view class="item">
+                <view class="img">
+                    <image src="https://unsplash.it/200/200"></image>
+                    <view class="span">三人团</view>
+                </view>
+                <view class="info">
+                    <view class="t">
+                        <text class="name">女士皮马棉基础吊带女士皮马棉基础吊带</text>
+                    </view>
+                    <view class="i">
+                        <image src="https://wx.qlogo.cn/mmopen/vi_32/7Hy7kuj8kZoUrX6ZL6p3bEEfNlufv7HhLkMfib71EVNDwxALA7B0FXZqLCgz1Js2ickejOwR6bumXMHauOgJlGYg/132"></image>
+                        <image src="https://wx.qlogo.cn/mmopen/vi_32/7Hy7kuj8kZoUrX6ZL6p3bEEfNlufv7HhLkMfib71EVNDwxALA7B0FXZqLCgz1Js2ickejOwR6bumXMHauOgJlGYg/132"></image>
+                        <image src="https://wx.qlogo.cn/mmopen/vi_32/7Hy7kuj8kZoUrX6ZL6p3bEEfNlufv7HhLkMfib71EVNDwxALA7B0FXZqLCgz1Js2ickejOwR6bumXMHauOgJlGYg/132"></image>
+                        <image src="../../resource/images/more.png"></image>
+                    </view>
+                    <view class="price">￥25.00</view>
+                    <view class="attr">
+                        <text class="a">团长免单</text>
+                        <text class="b">去拼团</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

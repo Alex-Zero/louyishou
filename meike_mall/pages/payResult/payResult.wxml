@@ -1,0 +1,38 @@
+<view class="container">
+    <view class="pay-result">
+        <view class="success" wx:if="{{status==1}}">
+            <view class="msg" style="margin-bottom:0">
+                <i class="iconfont icon-check-circle-fill" style="font-size:145rpx;"></i>
+            </view>
+            <view class="msg">支付成功</view>
+            <view class="btns">
+                <view bindtap="ling" class="btn active" wx:if="{{rap_price!='0.00'}}">领取红包</view>
+                <navigator class="btn" openType="switchTab" url="/meike_mall/pages/ucenter/order/order" wx:else>查看订单</navigator>
+                <navigator class="btn" openType="switchTab" url="/meike_mall/pages/index/index">继续逛</navigator>
+            </view>
+        </view>
+        <view class="error" wx:if="{{status==0}}">
+            <view class="msg" style="margin-bottom:0">
+                <i class="iconfont icon-warning-circle-fill" style="font-size:145rpx;"></i>
+            </view>
+            <view class="msg">支付失败</view>
+            <view class="tips">
+                <view class="p">请在
+          <text class="time">1小时</text> 内完成付款</view>
+                <view class="p">否则订单将会被系统取消</view>
+            </view>
+            <view class="btns">
+                <navigator class="btn" openType="redirect" url="/meike_mall/pages/ucenter/order/order">查看订单</navigator>
+                <view bindtap="payOrder" class="btn">重新付款</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view hidden="{{hbshow}}" style="position:fixed;top:180rpx;left:0;width:550rpx;height:672rpx;">
+    <image src="../../resource/images/resulthb.png" style="width:100%;height:100%;margin-left:100rpx"></image>
+    <view style="color:#663700;position:absolute;top:100rpx;width:100%;text-align:center;left:100rpx">￥
+    <text style="font-size:60rpx;color:#663700;font-weight:bold">{{rap_price}}</text>
+    </view>
+    <button bindtap="save" style="position:absolute;bottom:50rpx;width:300rpx;background:#f5d5ac;color:#663700;height:70rpx;line-height:70rpx;border-radius:35rpx;left:225rpx;font-weight:bold">存入我的账户</button>
+    <i bindtap="close" class="iconfont icon-close-circle" style="position:absolute;top:-30rpx;right:-100rpx;font-size:56rpx;color:#333"></i>
+</view>

@@ -1,0 +1,52 @@
+<view class="container">
+    <view class="cate">
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==0?'hover':''}}" data-sid="0">
+      未使用
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==1?'hover':''}}" data-sid="1">
+      已使用
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==2?'hover':''}}" data-sid="2">
+      已过期
+    </view>
+    </view>
+    <view class="blank"></view>
+    <view class="info-no" wx:if="{{couponList==''}}">暂无数据</view>
+    <block wx:else>
+        <view class="coupon-list" wx:for="{{couponList}}">
+            <view class="item" style="background: #dcb573" wx:if="{{currentTabsIndex==0}}">
+                <view class="content">
+                    <view class="left">
+                        <view class="name">{{item.name}}</view>
+                        <view class="time">{{item.get_time}}-{{item.due_time}}</view>
+                    </view>
+                    <view class="right">
+                        <button bindtap="go" class="go">去使用</button>
+                    </view>
+                </view>
+            </view>
+            <view class="item" style="background: #ccc" wx:if="{{currentTabsIndex==1}}">
+                <view class="content">
+                    <view class="left">
+                        <view class="name">{{item.name}}</view>
+                        <view class="time">{{item.get_time}}-{{item.due_time}}</view>
+                    </view>
+                    <view class="right">
+                        <button class="go" style="color:#ccc" wx:if="{{currentTabsIndex==1}}">已使用</button>
+                    </view>
+                </view>
+            </view>
+            <view class="item" style="background: #ccc" wx:if="{{currentTabsIndex==2}}">
+                <view class="content">
+                    <view class="left">
+                        <view class="name">{{item.name}}</view>
+                        <view class="time">{{item.get_time}}-{{item.due_time}}</view>
+                    </view>
+                    <view class="right">
+                        <button class="go" style="color:#ccc" wx:if="{{currentTabsIndex==2}}">已过期</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

@@ -1,0 +1,103 @@
+<import src="../common/common.wxml"></import>
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" id="{{index}}" wx:for="{{tabs}}" wx:key="{{index}}">
+                    <i class="iconfont icon-{{item.icon}}" style="{{activeIndex==index?'color:#b4282d;font-size:45rpx;height:60rpx':'font-size:45rpx;height:60rpx'}}"></i>
+                    <view class="weui-navbar__title {{activeIndex==index?'weui-bar__item_on':''}}">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex!=0}}"></view>
+                <view class="weui-tab__content" hidden="{{activeIndex!=1}}">
+                    <view class="fans">
+                        <navigator class="h" hoverClass="none" url="">
+                            <view class="label">我的店铺收益</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access" style="position:absolute;right:30rpx;"></view>
+                        </navigator>
+                    </view>
+                    <view class="info">
+                        <view class="i">
+                            <view class="y">
+                                <text>今日收入</text>
+                                <text style="font-size:45rpx;">{{todayTotal||'0.00'}}</text>
+                            </view>
+                            <view class="y">
+                                <text>昨日收入</text>
+                                <text style="font-size:45rpx;">{{yesterdayTotal||'0.00'}}</text>
+                            </view>
+                            <view class="t">
+                                <text>全部收入</text>
+                                <text style="font-size:45rpx;">{{allTotal||'0.00'}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="weui-cells weui-cells_after-title" style="margin-top:20rpx;border-bottom:1rpx solid #eee;">
+                        <navigator hoverClass="none" url="../shareFans/shareFans">
+                            <view class="weui-cell weui-cell_access">
+                                <i class="iconfont icon-moneycollect" style="font-size:40rpx;padding-right:20rpx;"></i>
+                                <view class="weui-cell__bd" style="font-size:30rpx">佣金提现</view>
+                                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                            </view>
+                        </navigator>
+                    </view>
+                    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+                        <navigator hoverClass="none" url="../shareFans/shareFans">
+                            <view class="weui-cell weui-cell_access">
+                                <i class="iconfont icon-piechart" style="font-size:40rpx;padding-right:20rpx;"></i>
+                                <view class="weui-cell__bd" style="font-size:30rpx">佣金详情</view>
+                                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                            </view>
+                        </navigator>
+                    </view>
+                    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+                        <navigator hoverClass="none" url="../shareFans/shareFans">
+                            <view class="weui-cell weui-cell_access">
+                                <i class="iconfont icon-YUAN" style="font-size:40rpx;padding-right:20rpx;"></i>
+                                <view class="weui-cell__bd" style="font-size:30rpx">提现明细</view>
+                                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                            </view>
+                        </navigator>
+                    </view>
+                    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+                        <navigator hoverClass="none" url="../shareFans/shareFans">
+                            <view class="weui-cell weui-cell_access">
+                                <i class="iconfont icon-team" style="font-size:40rpx;padding-right:20rpx;"></i>
+                                <view class="weui-cell__bd" style="font-size:30rpx">我的团队</view>
+                                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                            </view>
+                        </navigator>
+                    </view>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex!=2}}">
+                    <view class="cell_2" style="margin-top:20rpx;">
+                        <view class="switch_content">
+                            <view>显示专题</view>
+                        </view>
+                        <view class="switch_group">
+                            <switch checked bindchange="switch1Change" color="#b4282d"></switch>
+                        </view>
+                    </view>
+                    <view class="cell_2">
+                        <view class="switch_content">
+                            <view>独立设置分销商品</view>
+                        </view>
+                        <view class="switch_group">
+                            <switch checked bindchange="switch1Change" color="#b4282d"></switch>
+                        </view>
+                    </view>
+                    <view class="cell_2">
+                        <view class="switch_content">
+                            <view>显示品牌页</view>
+                        </view>
+                        <view class="switch_group">
+                            <switch checked bindchange="switch1Change" color="#b4282d"></switch>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="AI-exit" data></template>

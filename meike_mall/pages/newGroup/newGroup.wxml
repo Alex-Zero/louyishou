@@ -1,0 +1,42 @@
+<view class="container">
+    <view class="address-list">
+        <view bindtap="addressAddOrUpdate" class="item">
+            <view class="l">
+                <view class="name">UGoul</view>
+                <view class="default" wx:if="{{item.is_default=='1'}}">默认</view>
+            </view>
+            <view class="c">
+                <view class="mobile">15653211981</view>
+                <view class="address">山东省青岛市市北区</view>
+            </view>
+            <view class="r">
+                <image catchtap="deleteAddress" class="del" data-address-id="{{item.id}}" src="../../resource/images/address_right.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="total">
+        <text class="a">商品合计</text>
+        <text class="b">￥24.50</text>
+    </view>
+    <view class="order-goods">
+        <view class="h">
+            <view class="label">商品信息</view>
+            <view class="status">{{orderInfo.order_status_text}}</view>
+        </view>
+        <view class="goods">
+            <view class="item">
+                <view class="img">
+                    <image src="https://unsplash.it/200/200"></image>
+                </view>
+                <view class="info">
+                    <view class="t">
+                        <text class="name">女士基础吊带皮马棉</text>
+                        <text class="number">x2</text>
+                    </view>
+                    <view class="attr">麻灰 2件;XS</view>
+                    <view class="price">￥24.50</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

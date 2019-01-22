@@ -1,0 +1,70 @@
+<view class="container">
+    <form bindsubmit="submitForm" reportSubmit="true" type="submit">
+        <view class="address-box">
+            <view bindtap="selectAddress" class="address-item" wx:if="{{address}}">
+                <view class="l">
+                    <text class="name">{{address.name}}</text>
+                    <text class="default" wx:if="{{address.is_default==1}}">默认</text>
+                </view>
+                <view class="m">
+                    <text class="mobile">{{address.mobile}}</text>
+                    <text class="address">{{address.province+address.city+address.district+address.address||''}}</text>
+                </view>
+                <view class="r">
+                    <i class="iconfont icon-right"></i>
+                </view>
+            </view>
+            <view bindtap="addAddress" class="address-item address-empty" wx:else>
+                <view hoverClass="none">
+                    <view class="m">
+            您还没有收货地址，去添加
+          </view>
+                </view>
+                <view class="r" style="position:absolute;right:0;">
+                    <i class="iconfont icon-right"></i>
+                </view>
+            </view>
+        </view>
+        <view class="order-box">
+            <view class="order-item">
+                <view class="l">
+                    <text class="name">商品合计</text>
+                </view>
+                <view class="r">
+                    <text class="txt">￥{{orderInfo.actual_price}}</text>
+                </view>
+            </view>
+            <view class="order-item no-border">
+                <view class="l">
+                    <text class="name">支付方式</text>
+                </view>
+                <view class="r">
+                    <text class="txt">微信支付</text>
+                </view>
+            </view>
+        </view>
+        <view class="goods-items">
+            <view class="item">
+                <view class="img">
+                    <image src="{{orderInfo.goods_img}}"></image>
+                </view>
+                <view class="info">
+                    <view class="t">
+                        <text class="name" style="width:90%;">{{orderInfo.name}}</text>
+                        <text class="number">x1</text>
+                    </view>
+                    <view class="m">默认</view>
+                    <view class="b">￥{{orderInfo.actual_price}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="order-total" wx:if="{{address!=''}}">
+            <view class="l">实付:￥{{orderInfo.actual_price}}</view>
+            <button class="r" formType="submit">付 款</button>
+        </view>
+        <view class="order-total" wx:else>
+            <view class="l">实付：￥{{orderInfo.actual_price}}</view>
+            <view bindtap="addAddress" class="r" style="background-color: #b4282d;color:#FFFFFF;">请先添加收货地址</view>
+        </view>
+    </form>
+</view>

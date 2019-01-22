@@ -1,0 +1,33 @@
+<view class="comments">
+    <view class="h">
+        <view bindtap="switchTab" class="item {{showType==0?'active':''}}">
+            <view class="txt">一级({{first_count}})</view>
+        </view>
+        <view bindtap="switchTab" class="item {{showType==0?'':'active'}}">
+            <view class="txt">二级({{second_count}})</view>
+        </view>
+    </view>
+    <view style="height:90rpx;width:750rpx"></view>
+    <view class="info-content">
+        <view class="info-label" wx:for="{{teamList}}">
+            <view class="info-up flex-y-center">
+                <view class="info-img">
+                    <image class="img" src="{{item.fans_avatar}}"></image>
+                </view>
+                <view class="info-text">
+                    <view class="info-name">{{item.fans_name}}</view>
+                    <view class="info-time">注册时间：{{item.ctime}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="info-footer flex-row">
+        <view class="info-before">
+            <view class="info-border"></view>
+        </view>
+        <view class="info-t">没有更多了</view>
+        <view class="info-after">
+            <view class="info-border"></view>
+        </view>
+    </view>
+</view>

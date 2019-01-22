@@ -1,0 +1,107 @@
+.container {
+    background: #f4f4f4;
+    height: 100%;
+}
+
+button::after {
+    content: none;
+}
+
+.top {
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    padding: 40rpx 40rpx;
+}
+
+.top .a {
+    font-size: 40rpx;
+    width: 100%;
+    font-weight: bold;
+}
+
+.top .b {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.top .c {
+    width: 100%;
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+}
+
+.top .d {
+    font-size: 24rpx;
+    margin-top: 40rpx;
+}
+
+.bottom {
+    text-align: center;
+    background: #fff;
+    padding: 30rpx 31.25rpx;
+    margin-top: 20rpx;
+}
+
+.bottom .a {
+    font-size: 32rpx;
+    font-weight: 500;
+}
+
+.info-content {
+    width: 100%;
+    margin-bottom: 12rpx;
+}
+
+.info-content .info-label {
+    width: 100%;
+    background-color: #fff;
+}
+
+.info-label .info-up {
+    width: 100%;
+    height: 160rpx;
+    border-bottom: 1rpx #eeeeee solid;
+}
+
+.info-label .info-down {
+    width: 100%;
+    height: 80rpx;
+    color: #666;
+}
+
+.info-label .info-up .info-img {
+    margin-right: 24rpx;
+    height: 120rpx;
+    width: 120rpx;
+}
+
+.info-up .info-img .img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.info-up .info-text .info-name {
+    text-align: left;
+    color: #353535;
+}
+
+.info-up .info-text .info-time {
+    font-size: 9pt;
+    color: #666666;
+}
+
+.info-down .info-left {
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.info-down .info-right {
+    float: right;
+    height: 80rpx;
+    width: 50%;
+    line-height: 80rpx;
+    text-align: right;
+}

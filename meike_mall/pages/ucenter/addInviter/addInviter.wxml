@@ -1,0 +1,12 @@
+<view class="container">
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <view class="fb-mobile">
+            <view class="label">邀请码</view>
+            <view class="mobile-box">
+                <input class="mobile" name="ivcode" placeholder="填写邀请码"></input>
+            </view>
+            <view style="padding-left:30rpx;font-size:24rpx;color:#8a8c8e;padding-top:30rpx;">温馨提示：一经绑定，不可修改</view>
+        </view>
+        <button class="fb-btn" disabled="{{disabled}}" formType="submit">绑 定</button>
+    </form>
+</view>

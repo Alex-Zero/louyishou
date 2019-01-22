@@ -1,0 +1,24 @@
+<view class="container">
+    <view class="form-box">
+        <view class="form-item">
+            <input autoFocus bindinput="bindUsernameInput" class="username" placeholder="用户名" value="{{username}}"></input>
+            <image catchtap="clearInput" class="clear" id="clear-username" src="/static/images/clear_input.png" wx:if="{{username.length>0}}"></image>
+        </view>
+        <view class="form-item">
+            <input password bindinput="bindPasswordInput" class="password" placeholder="密码" value="{{password}}"></input>
+            <image catchtap="clearInput" class="clear" id="clear-password" src="/static/images/clear_input.png" wx:if="{{password.length>0}}"></image>
+        </view>
+        <view class="form-item">
+            <input password bindinput="bindConfirmPasswordInput" class="password" placeholder="确认密码" value="{{confirmPassword}}"></input>
+            <image catchtap="clearInput" class="clear" id="clear-confirm-password" src="/static/images/clear_input.png" wx:if="{{confirmPassword.length>0}}"></image>
+        </view>
+        <view class="form-item-code">
+            <view class="form-item code-item">
+                <input bindinput="bindCodeInput" class="code" placeholder="验证码" value="{{code}}"></input>
+                <image catchtap="clearInput" class="clear" id="clear-code" src="/static/images/clear_input.png" wx:if="{{code.length>0}}"></image>
+            </view>
+            <image class="code-img" src="https://dl.reg.163.com/cp?pd=yanxuan_web&pkid=SkeBZeG&random=1489903563234"></image>
+        </view>
+        <button bindtap="startRegister" class="login-btn" type="default">注册</button>
+    </view>
+</view>

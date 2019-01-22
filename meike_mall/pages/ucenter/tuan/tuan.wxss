@@ -1,0 +1,60 @@
+page {
+    height: 100%;
+    min-height: 100%;
+    background: #f4f4f4;
+}
+
+.container {
+    background: #f4f4f4;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.no-tuan {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.no-tuan button {
+    width: 30%;
+    border-radius: 0;
+    height: 65rpx;
+    font-size: 28rpx;
+    line-height: 65rpx;
+    border: 1px solid #b4282d;
+    color: #b4282d;
+    margin-top: 30rpx;
+    background: #f4f4f4;
+}
+
+button::after {
+    content: none;
+}
+
+.no-tuan .c {
+    width: 100%;
+    height: auto;
+    margin-top: 200rpx;
+}
+
+.no-tuan .c image {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 258rpx;
+    height: 258rpx;
+}
+
+.no-tuan .c text {
+    margin: 0 auto;
+    display: block;
+    width: 258rpx;
+    height: 29rpx;
+    line-height: 29rpx;
+    text-align: center;
+    font-size: 29rpx;
+    color: #999;
+}

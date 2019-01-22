@@ -1,0 +1,75 @@
+<view class="container">
+    <view class="swiper">
+        <image mode="aspectFill" src="{{fxset.partner_img}}"></image>
+        <view class="shadow"></view>
+        <view class="top">
+            <view class="title">申请成为合伙人</view>
+            <view class="desc">{{fxset.partner_text}}</view>
+        </view>
+    </view>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <view class="fb-mobile" style="padding-top:120rpx;">
+            <view class="label">邀请人</view>
+            <view class="mobile-box">
+                <input class="mobile" disabled="true" name="inviter" style="color:#b4282d" value="{{inviter||'总店'}}"></input>
+                <view bindtap="change" class="get" wx:if="{{inviter==''}}">修改</view>
+            </view>
+        </view>
+        <view class="fb-mobile" style="padding-top:30rpx;">
+            <view class="label">姓名</view>
+            <view class="mobile-box">
+                <input bindinput="owner" class="mobile" name="owner" placeholder="请填写真实姓名" value="{{owner}}"></input>
+            </view>
+        </view>
+        <view class="fb-mobile" style="padding-top:30rpx;">
+            <view class="label">手机号</view>
+            <view class="mobile-box">
+                <input bindinput="phoneInput" class="mobile" maxlength="11" name="phoneNumber" placeholder="点击获取手机号码" type="number" value="{{phoneNumber}}"></input>
+                <button bindgetphonenumber="getPhoneNumber" class="get" openType="getPhoneNumber" style="padding:0;font-size:28rpx;" wx:if="{{phoneNumber==''}}">获取</button>
+            </view>
+        </view>
+        <view class="fb-mobile" style="padding-top:30rpx;">
+            <view class="label">合伙人等级</view>
+            <picker bindchange="bindPickerChange" range="{{array}}" style="width:750rpx;z-index:500" value="{{index}}">
+                <view class="picker">
+                    <view class="fb-type">
+                        <view class="type-label">{{array[index]}}</view>
+                        <image class="type-icon" src="../../../resource/images/up.png"></image>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view class="fb-mobile" style="height:308rpx;">
+            <view class="label" style="background:#f4f4f4;height:80rpx;line-height:80rpx;padding-top:0">费用及等级权限</view>
+            <view class="info">
+                <view class="l">
+                    <i class="iconfont icon-moneycollect-fill" style="font-size:80rpx;color:#ff6666"></i>
+                    <text style="font-size:24rpx">加入费用</text>
+                    <text style="font-size:24rpx;color:#b4282d">￥{{money}}</text>
+                </view>
+                <view class="l">
+                    <i class="iconfont icon-Dollar-circle-fill" style="font-size:80rpx;color:#e6ac00"></i>
+                    <text style="font-size:24rpx">商品收益</text>
+                    <text style="font-size:24rpx;color:#b4282d">后台实时查看</text>
+                </view>
+                <view class="r" wx:if="{{fxset.is_commission=='1'}}">
+                    <i class="iconfont icon-piechart-circle-fil" style="font-size:80rpx;color:#6666ff"></i>
+                    <text style="font-size:24rpx">提成比例</text>
+                    <text style="font-size:24rpx;color:#b4282d">一级:{{commission}}% 二级:{{commission2}}%</text>
+                </view>
+            </view>
+        </view>
+        <view class="fb-mobile" style="height:258rpx;">
+            <view class="label" style="background:#f4f4f4;height:80rpx;line-height:80rpx;padding-top:0">分销说明</view>
+            <view class="fb-body">
+                <textarea class="content" disabled="true" value="{{fxset.instructions}}"></textarea>
+            </view>
+        </view>
+        <view class="view-center" style="padding-top:20rpx;color:#8a8c8e;font-size:24rpx;background:#f4f4f4">
+            <view style="color:#8a8c8e;font-size:24rpx;">申请即视为同意
+        <text bindtap="xieyi" style="color:#b4282d;font-size:24rpx;">《{{pluscard.title}}用户协议》</text>
+            </view>
+        </view>
+        <button class="fb-btn" formType="submit">提 交</button>
+    </form>
+</view>

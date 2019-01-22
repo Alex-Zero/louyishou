@@ -1,0 +1,70 @@
+<view class="container">
+    <view class="order-info">
+        <view class="item-a">下单时间：{{orderInfo.add_time}}</view>
+        <view class="item-b">订单编号：{{orderInfo.order_sn}}</view>
+        <view class="item-c">
+            <view class="l">实付：
+        <text class="cost">￥{{orderInfo.actual_price}}</text>
+            </view>
+            <view class="r" wx:if="{{orderInfo.order_status=='0'}}">
+                <view bindtap="buttonClick" class="btn" data-id="{{index}}" data-ordersn="{{orderInfo.order_sn}}" data-sid="cancel">取消订单</view>
+                <view bindtap="buttonClick" class="btn active" data-attr="{{orderInfo.pay_attr}}" data-id="{{index}}" data-num="{{orderInfo.pay_num}}" data-ordersn="{{orderInfo.order_sn}}" data-pid="{{orderInfo.actual_price}}" data-sid="pay" data-tid="{{orderInfo.pay_name}}">去付款</view>
+            </view>
+            <view class="r" wx:elif="{{orderInfo.order_status=='2'}}">
+                <navigator class="btn active" url="../express/express?id={{orderInfo.order_sn}}">查快递</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="order-goods">
+        <view class="h">
+            <view class="label">商品信息</view>
+            <view class="status" wx:if="{{orderInfo.order_status=='0'}}">待付款</view>
+            <view class="status" wx:if="{{orderInfo.order_status=='1'}}">待发货</view>
+            <view class="status" wx:if="{{orderInfo.order_status=='2'}}">待收货</view>
+            <view class="status" wx:if="{{orderInfo.order_status=='4'}}">处理中</view>
+        </view>
+        <view class="goods">
+            <view class="item" wx:for="{{orderGoods}}" wx:key="{{item.id}}">
+                <view class="img">
+                    <image src="{{item.goods_image}}"></image>
+                </view>
+                <view class="info">
+                    <view class="t">
+                        <text class="name">{{item.pay_name}}</text>
+                        <text class="number">x{{item.pay_num}}</text>
+                    </view>
+                    <view class="attr">{{item.pay_attr}}</view>
+                    <view class="price">￥{{item.actual_price}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="order-bottom">
+        <view class="address">
+            <view class="t">
+                <text class="name">{{orderInfo.consignee}}</text>
+                <text class="mobile">{{orderInfo.mobile}}</text>
+            </view>
+            <view class="b">{{orderInfo.province+orderInfo.city+orderInfo.district+orderInfo.address}}</view>
+        </view>
+        <view class="total">
+            <view class="t">
+                <text class="label">商品合计：</text>
+                <text class="txt" wx:if="{{userInfo.member=='1'}}">￥{{orderInfo.member_price}}</text>
+                <text class="txt" wx:else>￥{{orderInfo.order_price}}</text>
+            </view>
+            <view class="t">
+                <text class="label">优惠券：</text>
+                <text class="txt">-￥{{orderInfo.coupon_price}}</text>
+            </view>
+            <view class="t">
+                <text class="label">运费：</text>
+                <text class="txt">￥{{orderInfo.freight_price}}</text>
+            </view>
+        </view>
+        <view class="pay-fee">
+            <text class="label">实付：</text>
+            <text class="txt">￥{{orderInfo.actual_price}}</text>
+        </view>
+    </view>
+</view>

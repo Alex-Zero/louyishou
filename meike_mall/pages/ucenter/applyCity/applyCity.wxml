@@ -1,0 +1,89 @@
+<view class="container">
+    <view class="swiper">
+        <image mode="aspectFill" src="{{fxset.store_img}}"></image>
+        <view class="shadow"></view>
+        <view class="top">
+            <view class="title">申请成为城市代理</view>
+            <view class="desc">{{fxset.city_text}}</view>
+        </view>
+    </view>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <view class="fb-mobile" style="padding-top:120rpx;">
+            <view class="label">邀请人</view>
+            <view class="mobile-box">
+                <input class="mobile" disabled="true" name="inviter" style="color:#b4282d" value="{{inviter||'总店'}}"></input>
+                <view bindtap="change" class="get" wx:if="{{inviter==''}}">修改</view>
+            </view>
+        </view>
+        <view class="fb-mobile" style="padding-top:30rpx;">
+            <view class="label">选择城市</view>
+            <view class="mobile-box">
+                <input bindtap="chooseRegion" class="mobile" disabled="true" placeholder="省份、城市" value="{{address.province+address.city+address.district||''}}"></input>
+            </view>
+        </view>
+        <view class="fb-mobile" style="padding-top:30rpx;">
+            <view class="label">姓名</view>
+            <view class="mobile-box">
+                <input bindinput="owner" class="mobile" name="owner" placeholder="请填写真实姓名" value="{{owner}}"></input>
+                <image bindtap="removeOwner" class="clear-icon" src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/clear-fb-dd9d604f86.png" wx:if="{{owner.length>0}}"></image>
+            </view>
+        </view>
+        <view class="fb-mobile" style="padding-top:30rpx;">
+            <view class="label">手机号</view>
+            <view class="mobile-box">
+                <input class="mobile" maxlength="11" name="phoneNumber" placeholder="点击获取手机号码" type="number" value="{{phoneNumber}}"></input>
+                <button bindgetphonenumber="getPhoneNumber" class="get" openType="getPhoneNumber" style="padding:0;font-size:28rpx;" wx:if="{{phoneNumber==''}}">获取</button>
+            </view>
+        </view>
+        <view class="weui-cells" style="margin:30rpx 0 20rpx 0;">
+            <view class="weui-cell" style="padding:0 20rpx 20rpx 20rpx;">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd" style="font-size:28rpx;">
+                            <view class="uploader">
+                                <text class="a">身份证</text>
+                                <text class="b">{{imgArray.length}}/5</text>
+                            </view>
+                        </view>
+                        <view class="weui-uploader__bd" style="padding:0 10rpx;">
+                            <view class="weui-uploader__files">
+                                <view class="weui-uploader__file" wx:for="{{imgArray}}" wx:key="index">
+                                    <image bindtap="previewImage" class="weui-uploader__img" data-index="{{index}}" src="{{url}}/addons/meike_mall/m_upload/{{uniacid}}/{{item}}"></image>
+                                </view>
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view bindtap="imgArray" class="weui-uploader__input"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="fb-mobile" style="height:258rpx;">
+            <view class="label" style="background:#f4f4f4;height:80rpx;line-height:80rpx;padding-top:0;padding-bottom:0">分销说明</view>
+            <view class="fb-body">
+                <textarea class="content" value="{{fxset.instructions}}"></textarea>
+            </view>
+        </view>
+        <view class="view-center" style="padding-top:20rpx;color:#8a8c8e;font-size:24rpx;background:#f4f4f4">
+            <view style="color:#8a8c8e;font-size:24rpx;">申请即视为同意
+        <text bindtap="xieyi" style="color:#b4282d;font-size:24rpx;">《{{pluscard.title}}用户协议》</text>
+            </view>
+        </view>
+        <button class="fb-btn" formType="submit">提 交</button>
+    </form>
+    <view class="region-select" wx:if="{{openSelectRegion}}">
+        <view class="hd">
+            <view class="region-selected">
+                <view bindtap="selectRegionType" class="item {{item.id==0?'disabled':''}} {{regionType-1===index?'selected':''}}" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="{{item.id}}">{{item.name}}</view>
+            </view>
+            <view bindtap="doneSelectRegion" class="done {{selectRegionDone?'':'disabled'}}">确定</view>
+        </view>
+        <scroll-view scrollY class="bd">
+            <view class="region-list">
+                <view bindtap="selectRegion" class="item {{item.selected?'selected':''}}" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="{{item.id}}">{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view bindtap="cancelSelectRegion" class="bg-mask" wx:if="{{openSelectRegion}}"></view>

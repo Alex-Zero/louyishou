@@ -1,0 +1,34 @@
+<view class="container">
+    <view class="label">
+    当前城市
+  </view>
+    <view class="info">
+        <view class="a">青岛</view>
+        <view bindtap="location" class="b">
+            <i class="iconfont icon-undo" style="color:#b4282d"></i>
+            <text>重新定位</text>
+        </view>
+    </view>
+    <view class="label">
+    C
+  </view>
+    <view class="quyu">
+        <view class="city">长沙</view>
+    </view>
+    <view class="label">
+    Q
+  </view>
+    <view class="quyu">
+        <view class="city">青岛</view>
+        <view class="city">青岛</view>
+        <view class="city">青岛</view>
+        <view class="city">青岛</view>
+        <view class="city">青岛</view>
+    </view>
+    <view class="label">
+    Y
+  </view>
+    <view class="quyu">
+        <view class="city">烟台</view>
+    </view>
+</view>

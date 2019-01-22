@@ -1,0 +1,109 @@
+<view class="content">
+    <view class="goods-manager">
+        <view class="goods-manager-left">
+            <view class="brand">
+                <image src="{{userInfo.avatar}}"></image>
+            </view>
+            <view class="column">
+                <text style="font-size: 34rpx;height:60rpx;font-weight:bold;">{{userInfo.nickname}}</text>
+                <block wx:if="{{sysinfo.shereType=='0'}}">
+                    <view style="font-size: 22rpx;height:60rpx;" wx:if="{{nums<poor&&userInfo.member=='0'}}">已经邀请
+            <text>{{nums}}</text>位好友，还差
+            <text>{{minus}}</text>位可成为会员
+          </view>
+                    <view style="font-size: 22rpx;height:60rpx;" wx:elif="{{userInfo.member=='1'}}">已经邀请
+            <text>{{nums}}</text>位好友，尊享会员折扣
+          </view>
+                </block>
+                <block wx:if="{{sysinfo.shereType=='1'}}">
+                    <view style="font-size: 22rpx;height:60rpx;" wx:if="{{nums<poor&&userInfo.member=='0'}}">已经邀请
+            <text>{{nums}}</text>位好友，还差
+            <text>{{minus}}</text>位可成为会员
+          </view>
+                    <view style="font-size: 22rpx;height:60rpx;" wx:elif="{{userInfo.member=='1'&&nums<p1}}">已经邀请
+            <text>{{nums}}</text>位好友，还差
+            <text>{{p2}}</text>位可成为合伙人
+          </view>
+                    <view style="font-size: 22rpx;height:60rpx;" wx:elif="{{nums>p4}}">
+            已经邀请
+            <text>{{nums}}</text>位好友,尊享初级合伙人权益</view>
+                </block>
+            </view>
+        </view>
+        <view>
+            <view>
+                <text bindtap="invite" class="goods-manager-right" style="color:{{sysinfo.color}};border:1px solid {{sysinfo.color}}">邀请码</text>
+            </view>
+        </view>
+    </view>
+    <view style="height:302rpx;width:750rpx;" wx:if="{{userInfo.member==0}}">
+        <image src="../../../resource/images/fansvip.png" style="width:100%;height:100%;"></image>
+    </view>
+    <view style="height:302rpx;width:750rpx;" wx:if="{{userInfo.member==1}}">
+        <image src="../../../resource/images/fansvip.jpg" style="width:100%;height:100%;"></image>
+    </view>
+    <view class="fans">
+        <navigator class="h" hoverClass="none" url="../myFans/myFans">
+            <view class="label">我的粉丝</view>
+            <image src="../../../resource/images/address_right.png"></image>
+        </navigator>
+    </view>
+    <view class="info">
+        <view class="i">
+            <view class="sum" style="color:{{sysinfo.color}}">{{nums}}
+        <text>人</text>
+            </view>
+            <view class="y">
+                <text>昨日新增</text>
+                <text>{{ynums}}</text>
+            </view>
+            <view class="t">
+                <text>今日新增</text>
+                <text>{{tnums}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="fans1">
+        <view bindtap="inviter" class="h" wx:if="{{userInfo.inviter}}">
+            <view class="label">我的邀请人</view>
+            <image src="../../../resource/images/address_right.png"></image>
+        </view>
+        <view bindtap="inviterNull" class="h" wx:else>
+            <view class="label">我的邀请人</view>
+            <image src="../../../resource/images/address_right.png"></image>
+        </view>
+    </view>
+    <view class="form-box">
+        <form bindsubmit="formSubmit" reportSubmit="true">
+            <button class="login-btn" formType="submit" openType="share" style="background:{{sysinfo.color}}">
+                <text style="color:#fff;" wx:if="{{nums>poor||nums==poor}}">获取更多粉丝</text>
+                <text style="color:#fff;" wx:else>邀请好友享折扣</text>
+            </button>
+        </form>
+    </view>
+    <view class="related-goods" wx:if="{{giftGoodsList.length>0&&userInfo.member==0}}">
+        <view class="h">
+            <text class="title">选购任意一款礼包 即可成为会员</text>
+        </view>
+        <view style="background:#fff;padding:20rpx;padding-bottom:90rpx;" wx:if="{{userInfo.member==0}}">
+            <navigator class="flex-row" hoverClass="none" style="padding-bottom:30rpx" url="/meike_mall/pages/ucenter/giftGoods/giftGoods?id={{item.id}}" wx:for="{{giftGoodsList}}" wx:key="index">
+                <image mode="aspectFill" src="{{item.primary_pic_url}}" style="height:135rpx;width:135rpx;"></image>
+                <view class="flex-column" style="width:80%;padding-left:20rpx;">
+                    <view class="two-line" style="height:80rpx">{{item.name}}</view>
+                    <view style="height:40rpx;line-height:40rpx;display:flex;justify-content: space-between;margin-top:10rpx">
+                        <text>￥{{item.price}}</text>
+                        <text style="border:1px solid #b4282d;font-size:22rpx;padding:0 10rpx;color:#b4282d">购买</text>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>
+<view bindtap="buyMenu" style="position:fixed;bottom:100rpx;right:0;background:rgba(0,0,0,0.8);height:80rpx;padding:0 20rpx;line-height:80rpx;border-radius:40rpx 0 0 40rpx;" wx:if="{{userInfo.member==0}}">
+    <i class="iconfont icon-crown" style="color:#fff;"></i>
+    <text style="color:#fff;font-size:22rpx;padding-left:10rpx;">购买会员</text>
+</view>
+<navigator hoverClass="none" style="position:fixed;bottom:100rpx;right:0;background:rgba(0,0,0,0.8);height:80rpx;padding:0 20rpx;line-height:80rpx;border-radius:40rpx 0 0 40rpx;" url="../giftOrder/giftOrder?order_sn={{order.order_sn}}" wx:if="{{order.order_status!=3}}">
+    <i class="iconfont icon-gift" style="color:#fff;"></i>
+    <text style="color:#fff;font-size:22rpx;padding-left:10rpx;">礼品订单</text>
+</navigator>

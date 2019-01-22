@@ -1,0 +1,36 @@
+<view class="container">
+    <view class="sort">
+        <view class="sort-box">
+            <view bindtap="openSortFilter" class="item {{currentSortType=='default'?'active':''}}" id="defaultSort">
+                <text class="txt">综合</text>
+            </view>
+            <view bindtap="openSortFilter" class="item by-price {{currentSortType=='price'?'active':''}} {{currentSortOrder=='asc'?'asc':'desc'}}" id="priceSort">
+                <text class="txt">价格</text>
+            </view>
+            <view bindtap="openSortFilter" class="item {{currentSortType=='category'?'active':''}}" id="categoryFilter">
+                <text class="txt">分类</text>
+            </view>
+        </view>
+        <view class="sort-box-category" wx:if="{{categoryFilter}}">
+            <view bindtap="selectCategory" class="item {{item.checked?'active':''}}" data-category-index="{{index}}" wx:for="{{filterCategory}}" wx:key="cate-{{item.id}}">{{item.name}}</view>
+        </view>
+    </view>
+    <view class="cate-item">
+        <view class="b">
+            <view class="item" wx:for="{{goodsList}}" wx:key="{{item.id}}">
+                <navigator hoverClass="none" url="../goods/goods?id={{item.id}}&mch_id={{mch_id}}">
+                    <image backgroundSize="cover" class="img" src="{{item.primary_pic_url}}"></image>
+                    <view style="display:flex;flex-direction:row;">
+                        <block wx:if="{{userInfo.is_people=='2'}}">
+                            <text class="span" wx:if="{{item.is_distribution=='1'}}">预估佣金 ￥{{item.fx_total}}</text>
+                        </block>
+                        <text class="rap" wx:if="{{sysinfo.rap_show==1&&item.is_plugin==2}}">返 ￥{{item.plugin_price}}</text>
+                    </view>
+                    <text class="name">{{item.name}}</text>
+                    <text class="price">￥{{item.members_price}}</text>
+                    <text class="vip_price">非会员价:￥{{item.retail_price}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

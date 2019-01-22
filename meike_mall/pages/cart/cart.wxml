@@ -1,0 +1,56 @@
+<view class="container">
+    <view class="service-policy">
+        <view class="item" wx:for="{{sysinfo.labelArr}}">{{item}}</view>
+    </view>
+    <view class="no-cart" wx:if="{{cartGoods.length<=0}}">
+        <view class="c">
+            <image src="../../resource/images/cart.png"></image>
+        </view>
+    </view>
+    <view class="cart-view" wx:if="{{cartGoods.length>0}}">
+        <view class="list">
+            <view class="group-item">
+                <view class="header" wx:if="{{activity}}">
+                    <view class="promotion">
+                        <text class="tag">满减</text>
+                        <text class="txt">满199减10</text>
+                        <i class="iconfont icon-right"></i>
+                    </view>
+                    <view class="get">去凑单</view>
+                </view>
+                <view class="goods">
+                    <view class="item {{isEditCart?'edit':''}}" wx:for="{{cartGoods}}" wx:key="{{item.id}}">
+                        <view bindtap="checkedItem" class="checkbox {{item.checked?'checked':''}}" data-item-index="{{index}}"></view>
+                        <view class="cart-goods">
+                            <image class="img" mode="aspectFill" src="{{item.goods_image}}"></image>
+                            <view class="info">
+                                <view class="t">
+                                    <view class="name">{{item.goods_name}}</view>
+                                    <view class="num">x{{item.number}}</view>
+                                </view>
+                                <view class="attr">{{isEditCart?'已选择:':''}}{{item.goods_specifition_name_value}}<i class="{{isEditCart?'iconfont icon-right':''}}" style="font-size:22rpx;margin-left:5rpx;"></i>
+                                </view>
+                                <view class="b">
+                                    <text class="price">￥{{item.actual_price}}</text>
+                                    <view class="open {{isEditCart?'edit':''}}" wx:if="{{item.down=='0'}}">已下架</view>
+                                    <view class="selnum">
+                                        <view bindtap="cutNumber" class="cut" data-item-index="{{index}}">-</view>
+                                        <input class="number" disabled="true" type="number" value="{{item.number}}"></input>
+                                        <view bindtap="addNumber" class="add" data-item-index="{{index}}">+</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cart-bottom">
+            <view bindtap="checkedAll" class="checkbox {{checkedAllStatus?'checked':''}}">全选({{cartTotal.checkedGoodsCount}})</view>
+            <view class="total">{{!isEditCart?'￥'+cartTotal.checkedGoodsAmount:''}}</view>
+            <view bindtap="editCart" class="delete">{{!isEditCart?'编辑':'完成'}}</view>
+            <view bindtap="deleteCart" class="checkout" wx:if="{{isEditCart}}">删除所选</view>
+            <view bindtap="checkoutOrder" class="checkout" wx:if="{{!isEditCart}}">下单</view>
+        </view>
+    </view>
+</view>

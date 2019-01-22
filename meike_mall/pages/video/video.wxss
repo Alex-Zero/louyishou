@@ -1,0 +1,132 @@
+.container {
+    background: #f9f9f9;
+}
+
+.cate-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+.cate-nav-body {
+    height: 84rpx;
+    white-space: nowrap;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.cate-nav .item {
+    display: inline-block;
+    height: 83rpx;
+    min-width: 130rpx;
+    padding: 0 15rpx;
+}
+
+.cate-nav .item .name {
+    display: block;
+    height: 84rpx;
+    padding: 0 20rpx;
+    line-height: 84rpx;
+    color: #333;
+    font-size: 30rpx;
+    width: auto;
+}
+
+.cate-nav .item.active .name {
+    color: #b4282d;
+    border-bottom: 4px solid #b4282d;
+}
+
+.cate-item {
+    height: auto;
+    overflow: hidden;
+}
+
+.cate-item .h {
+    height: 145rpx;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cate-item .h .name {
+    display: block;
+    height: 35rpx;
+    margin-bottom: 18rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.cate-item .h .desc {
+    display: block;
+    height: 24rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.cate-item .b {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding: 0 5rpx 0 8.5rpx;
+}
+
+.cate-item .b .item {
+    float: left;
+    width: 335rpx;
+    margin: 0 17.5rpx;
+}
+
+.cate-item .b .item-b {
+    margin-left: 42rpx;
+}
+
+.cate-item .b .img {
+    width: 335rpx;
+    height: 335rpx;
+    background: #f4f4f4;
+}
+
+.cate-item .b .span {
+    background: #b4282d;
+    color: #fff;
+    font-size: 20rpx;
+    padding: 2rpx 8rpx;
+}
+
+.cate-item .b .name {
+    display: block;
+    width: 335rpx;
+    height: 50rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cate-item .b .price {
+    line-height: 30rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #b4282d;
+}
+
+.cate-item .b .vip_price {
+    padding-left: 10rpx;
+    line-height: 30rpx;
+    font-size: 20rpx;
+}
+
+.cate-item .b .price_o {
+    line-height: 30rpx;
+    font-size: 26rpx;
+    text-decoration: line-through;
+    color: #ccc;
+    padding-left: 10rpx;
+}

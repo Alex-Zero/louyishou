@@ -1,0 +1,33 @@
+<view class="container">
+    <view class="info">
+        <view class="price">
+            <text style="text-align:center;width:100%;font-size:28rpx;color:#fff">可用现金(元)</text>
+        </view>
+        <view class="price1">
+            <text style="text-align:center;width:100%;font-size:65rpx;color:#fff">{{allTotal}}</text>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <navigator hoverClass="none" url="../rapList/rapList">
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd" style="font-size:30rpx;display:flex;flex-direction:column">
+                    <view style="font-size:28rpx;">未提现</view>
+                    <view style="color:#b4282d;font-size:35rpx">￥{{weiTixian}}</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title" style="border-bottom:1rpx solid #eee;">
+        <navigator hoverClass="none" url="../rapList/rapList">
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd" style="font-size:30rpx;display:flex;flex-direction:column">
+                    <view style="font-size:28rpx;">已提现</view>
+                    <view style="color:#b4282d;font-size:35rpx">￥{{haveTixian||'0.00'}}</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+    </view>
+    <button bindtap="showTips" class="fb-btn" wx:if="{{weiTixian>0}}">提 现</button>
+</view>

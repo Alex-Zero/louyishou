@@ -1,0 +1,80 @@
+page {
+    height: 100%;
+    width: 100%;
+    background: #f4f4f4;
+}
+
+.container {
+    background: #f4f4f4;
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+    padding: 31.25rpx;
+}
+
+.one,.two {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.one .left,.two .left {
+    width: 330rpx;
+    height: 400rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.one .right {
+    width: 330rpx;
+    height: 400rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    padding: 30rpx;
+}
+
+.two .right {
+    width: 330rpx;
+    height: 400rpx;
+    border-radius: 8rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.b {
+    font-size: 60rpx;
+    height: 150rpx;
+    line-height: 150rpx;
+}
+
+.c {
+    border: 1px solid #b4282d;
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+    width: 150rpx;
+    font-size: 24rpx;
+    color: #b4282d;
+    float: right;
+}
+
+.d {
+    background: #fff;
+    height: 190rpx;
+    width: 100%;
+    border-radius: 8rpx;
+    padding: 30rpx;
+}
+
+.e {
+    font-size: 34rpx;
+}
+
+.f {
+    font-size: 24rpx;
+    color: #ccc;
+}

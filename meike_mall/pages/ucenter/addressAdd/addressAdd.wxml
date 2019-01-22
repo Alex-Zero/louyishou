@@ -1,0 +1,37 @@
+<view class="add-address">
+    <view class="add-form">
+        <view class="form-item">
+            <input autoFocus bindinput="bindinputName" class="input" placeholder="姓名" value="{{address.name}}"></input>
+        </view>
+        <view class="form-item">
+            <input bindinput="bindinputMobile" class="input" maxlength="11" placeholder="手机号码" type="number" value="{{address.mobile}}"></input>
+        </view>
+        <view class="form-item">
+            <input bindtap="chooseRegion" class="input" disabled="true" placeholder="省份、城市、区县" value="{{address.province+address.city+address.district||''}}"></input>
+        </view>
+        <view class="form-item">
+            <input bindinput="bindinputAddress" class="input" placeholder="详细地址, 如街道、楼盘号等" value="{{address.address}}"></input>
+        </view>
+        <view class="form-default">
+            <text bindtap="bindIsDefault" class="default-input {{address.is_default==1?'selected':''}}">设为默认地址</text>
+        </view>
+    </view>
+    <view class="btns">
+        <button bindtap="cancelAddress" class="cannel">取消</button>
+        <button bindtap="saveAddress" class="save" style="background:{{sysinfo.color}}">保存</button>
+    </view>
+    <view class="region-select" wx:if="{{openSelectRegion}}">
+        <view class="hd">
+            <view class="region-selected">
+                <view bindtap="selectRegionType" class="item {{item.id==0?'disabled':''}} {{regionType-1===index?'selected':''}}" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="{{item.id}}">{{item.name}}</view>
+            </view>
+            <view bindtap="doneSelectRegion" class="done {{selectRegionDone?'':'disabled'}}">确定</view>
+        </view>
+        <scroll-view scrollY class="bd">
+            <view class="region-list">
+                <view bindtap="selectRegion" class="item {{item.selected?'selected':''}}" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="{{item.id}}">{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view bindtap="cancelSelectRegion" class="bg-mask" wx:if="{{openSelectRegion}}"></view>

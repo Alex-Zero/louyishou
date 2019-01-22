@@ -1,0 +1,61 @@
+page {
+    background: #f7f7f7;
+}
+
+.container {
+    width: 100%;
+    background: #fff;
+}
+
+.small_image_text {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20rpx 30rpx;
+}
+
+.small_image_text image {
+    width: 108rpx;
+    height: 108rpx;
+}
+
+.small_image_text .view-column {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15rpx;
+}
+
+.view-column .title {
+    font-weight: bold;
+    font-size: 30rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+}
+
+.span {
+    padding: 0 10rpx;
+    background: #b4282d;
+    color: #fff;
+    font-size: 20rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    font-weight: normal;
+}
+
+.view-column .msg {
+    font-size: 24rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    color: #8a8c8e;
+}
+
+button {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    text-align: left;
+}
+
+button::after {
+    content: none;
+}

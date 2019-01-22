@@ -1,0 +1,257 @@
+<import src="../common/common.wxml"></import>
+<scroll-view class="container" scrollY="true">
+    <block wx:if="{{!openAttr}}">
+        <import src="../../lib/wxParse/wxParse.wxml"></import>
+        <view style="position:relative">
+            <swiper autoplay="{{autoplay}}" circular="true" class="goodsimgs" duration="1000" indicatorActiveColor="#fff" indicatorColor="#ccc" indicatorDots="{{dots}}" interval="3000">
+                <swiper-item wx:for="{{goods.list_pic_url}}" wx:key="{{index}}">
+                    <block wx:if="{{index==0}}">
+                        <image mode="aspectFill" src="{{item}}"></image>
+                        <image bindtap="vplay" src="../../resource/images/play.png" style="position:absolute;width:100rpx;height:100rpx;left:325rpx;top:325rpx;" wx:if="{{goods.videosrc!=''}}"></image>
+                    </block>
+                    <image backgroundSize="cover" mode="aspectFill" src="{{item}}" wx:else></image>
+                </swiper-item>
+                <view catchtouchmove="preventD" hidden="{{hide}}" style="width:750rpx;height:750rpx;position:absolute;top:0;background:#000">
+                    <video autoplay="{{videoauto}}" id="video" src="{{videosrc}}" style="width:750rpx;height:450rpx;margin-top:150rpx;"></video>
+                    <view bindtap="close" class="close1">
+                        <i class="iconfont icon-close" style="font-size:28rpx;"></i>关闭
+        </view>
+                </view>
+            </swiper>
+            <view class="service-policy">
+                <view class="item" wx:for="{{sysinfo.labelArr}}">{{item}}</view>
+            </view>
+            <view class="goods-info">
+                <view class="c">
+                    <text class="name">{{goods.name}}</text>
+                    <view class="desc">{{goods.goods_brief}}</view>
+                    <view style="margin-bottom:30rpx;">
+                        <span style="color:#f2312e;background:#ffe6de;padding:8rpx 8rpx;font-size:20rpx;border-radius:8rpx;" wx:if="{{userInfo.is_people=='2'}}">
+              佣金 {{goods.fx_total}}</span>
+                        <span style="color:#f5a623;background:#fdeaca;padding:8rpx 8rpx;font-size:20rpx;border-radius:8rpx;margin-left:10rpx;" wx:if="{{sysinfo.rap_show==1&&goods.is_plugin==2}}">返 {{goods.plugin_price}}</span>
+                    </view>
+                    <view class="price">
+                        <span style="font-size:24rpx;color:{{sysinfo.color||'#b4282d'}}">￥</span>
+                        <span style="font-size: 45rpx;color:{{sysinfo.color||'#b4282d'}};font-weight:bold">{{goods.members_price}}</span>
+                        <span style="font-size:24rpx;color:#555;padding-left:10rpx;">非会员价:￥{{goods.retail_price}}</span>
+                        <span style="font-size:24rpx;color:#555;padding-left:10rpx;position:absolute;right:30rpx;">已售:{{goods.sell_volume}}{{goods.goods_unit}}</span>
+                    </view>
+                    <view class="brand" wx:if="{{brand.name}}">
+                        <navigator hoverClass="none" url="../brandDetail/brandDetail?id={{brand.id}}">
+                            <text>{{brand.name}}</text>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="showModalAttr1" class="section-nav section-attr">
+                <view class="t">
+                    <text wx:if="{{goods.hasoption=='1'}}">请选择规格数量</text>
+                    <text wx:else>请选择数量</text>
+                </view>
+                <image backgroundSize="cover" class="i" src="../../resource/images/address_right.png"></image>
+            </view>
+            <view bindtap="fansPage" class="section-nav section-act">
+                <view class="t">
+                    <view class="label">活动</view>
+                    <view class="tag">折扣</view>
+                    <view class="text">分享商品，享会员折扣</view>
+                </view>
+                <image backgroundSize="cover" class="i" src="../../resource/images/address_right.png"></image>
+            </view>
+            <view class="instr" wx:if="{{instr.length>0}}">
+                <text class="name">规格介绍</text>
+                <view class="span">
+                    <view class="item" wx:for="{{instr}}">
+                        <text class="a">{{item.name}}</text>
+                        <text>{{item.desc}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="comments" wx:if="{{comment.count>0}}">
+                <view class="h">
+                    <navigator url="../comment/comment?valueId={{goods.id}}&typeId=0">
+                        <text class="t">商品评价({{comment.count>999?'999+':comment.count}})</text>
+                        <text class="i">查看全部</text>
+                    </navigator>
+                </view>
+                <view class="b">
+                    <view class="item">
+                        <view class="info">
+                            <view class="user">
+                                <image src="{{comment.data.avatar}}"></image>
+                                <text>{{comment.data.nickname}}</text>
+                            </view>
+                            <view class="time">{{comment.data.add_time}}</view>
+                        </view>
+                        <view class="content">
+            {{comment.data.content}}
+          </view>
+                        <view class="imgs" wx:if="{{comment.data.pic_list.length>0}}">
+                            <image class="img" src="{{item.pic_url}}" wx:for="{{comment.data.pic_list}}" wx:key="{{item.id}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="goods-attr" wx:if="{{attribute.length>0}}">
+                <view class="t">商品参数</view>
+                <view class="l">
+                    <view class="item" wx:for="{{attribute}}" wx:key="{{item.name}}">
+                        <text class="left">{{item.name}}</text>
+                        <text class="right">{{item.value}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="detail">
+                <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}"></template>
+            </view>
+            <view class="common-problem" wx:if="{{issueList.length>0}}">
+                <view class="h">
+                    <view class="line"></view>
+                    <text class="title">常见问题</text>
+                </view>
+                <view class="b">
+                    <view class="item" wx:for="{{issueList}}" wx:key="{{item.id}}">
+                        <view class="question-box">
+                            <text class="spot"></text>
+                            <text class="question">{{item.question}}</text>
+                        </view>
+                        <view class="answer">
+            {{item.answer}}
+          </view>
+                    </view>
+                </view>
+            </view>
+            <view class="a-section a-new" wx:if="{{relatedGoods.length>0}}">
+                <view class="h">
+                    <view>
+                        <navigator hoverClass="none" url="">
+                            <text class="txt">大家都在看</text>
+                        </navigator>
+                    </view>
+                </view>
+                <view class="b">
+                    <view class="item" wx:for="{{relatedGoods}}" wx:key="{{item.id}}">
+                        <navigator hoverClass="none" url="../goods/goods?id={{item.id}}&mch_id={{mch_id}}">
+                            <image backgroundSize="cover" class="img" src="{{item.primary_pic_url}}"></image>
+                            <block wx:if="{{userInfo.is_people=='2'}}">
+                                <text class="span" wx:if="{{item.is_distribution=='1'}}">预估佣金 ￥{{item.fx_total}}</text>
+                            </block>
+                            <text class="name">{{item.name}}</text>
+                            <text class="price" style="color:{{sysinfo.color}}">￥{{item.members_price}}</text>
+                            <text class="vip_price">非会员价:￥{{item.retail_price}}</text>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<view class="bottom-btn">
+    <view bindtap="index" class="l l-collect" style="border-right: 1px solid #f4f4f4;">
+        <image class="icon" src="../../resource/images/home.png"></image>
+    </view>
+    <button class="l l-collect" openType="contact" style="background:#fff;">
+        <image class="icon" src="../../resource/images/kefu.png"></image>
+    </button>
+    <view bindtap="showModalAttr3" class="r" style="background:{{sysinfo.color}};border: 1px solid {{sysinfo.color}};">立即购买</view>
+</view>
+<view bindtap="hideModalAttr" catchtouchmove="preventD" class="drawer_screen" style="width:{{windowWidth}}px;height:{{windowHeight}}px;" wx:if="{{showModalAttr}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalAttr}}">
+    <view class="attr-pop">
+        <view class="img-info" wx:if="{{goods.hasoption=='1'}}">
+            <image class="img" mode="aspectFill" src="{{thumb}}" wx:if="{{thumb!=''}}"></image>
+            <image class="img" mode="aspectFill" src="{{goods.primary_pic_url}}" wx:else></image>
+            <view class="info">
+                <view class="c">
+                    <view class="p" style="color:{{sysinfo.color}}" wx:if="{{checkedProduct.length>0}}">￥{{checkedProduct[0].costprice}}
+            <text style="font-size:20rpx;padding-left:10rpx;">非会员价:￥{{checkedProduct[0].marketprice}}</text>
+                    </view>
+                    <view class="p" style="color:{{sysinfo.color}}" wx:else>￥{{goods.members_price}}
+            <text style="font-size:20rpx;padding-left:10rpx;">非会员价:￥{{goods.retail_price}}</text>
+                    </view>
+                    <view class="h">库存
+            <text wx:if="{{checkedProduct.length>0}}">{{checkedProduct[0].stock}}</text>
+                        <text wx:else>{{goods.goods_number}}</text>{{goods.goods_unit}}</view>
+                    <view class="SpecText" style="color:{{sysinfo.color}}">{{checkedSpecText}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="img-info" wx:else>
+            <image class="img" mode="aspectFill" src="{{goods.primary_pic_url}}"></image>
+            <view class="info">
+                <view class="c">
+                    <view class="p" style="color:{{sysinfo.color}}">￥{{goods.members_price}}
+            <text style="font-size:24rpx;color:#333;padding-left:10rpx;">非会员价:￥{{goods.retail_price}}</text>
+                    </view>
+                    <view class="h">库存
+            <text>{{goods.goods_number}}</text>{{goods.goods_unit}}</view>
+                </view>
+            </view>
+        </view>
+        <scroll-view scrollY class="spec-con" wx:if="{{goods.hasoption=='1'}}">
+            <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
+                <view class="name">{{item.name}}</view>
+                <view class="values">
+                    <view bindtap="clickSkuValue" class="value {{vitem.checked?'selected':''}}" data-name-id="{{vitem.specification_id}}" data-value-id="{{vitem.id}}" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}">{{vitem.value}}</view>
+                </view>
+            </view>
+            <view class="number-item">
+                <view class="name">数量</view>
+                <view class="selnum">
+                    <view bindtap="cutNumber" class="cut">-</view>
+                    <input class="number" disabled="true" type="number" value="{{number}}"></input>
+                    <view bindtap="addNumber" class="add">+</view>
+                </view>
+            </view>
+        </scroll-view>
+        <scroll-view scrollY class="spec-con" wx:else>
+            <view class="spec-item">
+                <view class="name">规格</view>
+                <view class="values">
+                    <view class="value selected" style="color:{{sysinfo.color||'#b4282d'}};border:1px solid {{sysinfo.color||'#b4282d'}};">默认</view>
+                </view>
+            </view>
+            <view class="number-item">
+                <view class="name">数量</view>
+                <view class="selnum">
+                    <view bindtap="cutNumber" class="cut">-</view>
+                    <input class="number" disabled="true" type="number" value="{{number}}"></input>
+                    <view bindtap="addNumber" class="add">+</view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="attr1" wx:if="{{label=='1'}}">
+            <view bindtap="pay" style="background: {{sysinfo.color||'#b4282d'}};color:#fff;font-size:28rpx;width:100%">立即购买</view>
+        </view>
+        <view bindtap="addToCart" class="attr2" style="background:{{sysinfo.color}}" wx:if="{{label=='2'}}">
+      确定
+    </view>
+        <view bindtap="pay" class="attr2" style="background:{{sysinfo.color}}" wx:if="{{label=='3'}}">
+      确定
+    </view>
+    </view>
+</view>
+<view bindtap="hideModal" class="drawer_screen" style="width:{{windowWidth}}px;height:{{windowHeight}}px;" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+    <view class="a">
+        <text>活动详情</text>
+    </view>
+    <view bindtap="fansPage" class="info" style="padding:0 30rpx">
+        <view class="a">折扣</view>
+        <view class="b">分享商品，享会员折扣</view>
+        <view class="c">
+            <i class="iconfont icon-right"></i>
+        </view>
+    </view>
+</view>
+<view>
+    <button animation="{{animCollect}}" bindtap="collect" style="background:#f4f4f4;width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;position: fixed;bottom: 300rpx;right: 50rpx;">
+        <i class="iconfont icon-skin" style="font-size:52rpx;color:#707070"></i>
+    </button>
+    <button animation="{{animTranspond}}" bindtap="cotranspondllect" openType="share" style="background:#f4f4f4;width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;position: fixed;bottom: 300rpx;right: 50rpx;">
+        <i class="iconfont icon-share" style="font-size:52rpx;color:#707070"></i>
+    </button>
+    <button animation="{{animPlus}}" bindtap="plus" style="background:{{sysinfo.color||'#b4282d'}};width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;position: fixed;bottom: 300rpx;right: 50rpx;">
+        <i class="iconfont icon-plus" style="font-size:52rpx;color:#fff"></i>
+    </button>
+</view>

@@ -1,0 +1,33 @@
+page {
+    background: #fff;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.logo image {
+    width: 300rpx;
+    height: 300rpx;
+}
+
+.form-box {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 0 40rpx;
+    padding-top: 196rpx;
+    background: #fff;
+}
+
+.login-btn {
+    margin: 145rpx 0 40rpx 0;
+    height: 96rpx;
+    line-height: 96rpx;
+    color: #fff;
+    font-size: 30rpx;
+    width: 100%;
+    background: #b4282d;
+    border-radius: 6rpx;
+}

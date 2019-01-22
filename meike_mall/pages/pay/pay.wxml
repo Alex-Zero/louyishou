@@ -1,0 +1,128 @@
+<view class="container">
+    <form bindsubmit="submitForm" reportSubmit="true" type="submit">
+        <view class="address-box">
+            <view bindtap="selectAddress" class="address-item" wx:if="{{address}}">
+                <view class="l">
+                    <text class="name">{{address.name}}</text>
+                    <text class="default" wx:if="{{address.is_default==1}}">默认</text>
+                </view>
+                <view class="m">
+                    <text class="mobile">{{address.mobile}}</text>
+                    <text class="address">{{address.province+address.city+address.district+address.address||''}}</text>
+                </view>
+                <view class="r">
+                    <i class="iconfont icon-right"></i>
+                </view>
+            </view>
+            <view bindtap="addAddress" class="address-item address-empty" wx:else>
+                <view hoverClass="none">
+                    <view class="m">
+            您还没有收货地址，去添加
+          </view>
+                </view>
+                <view class="r" style="position:absolute;right:0;">
+                    <i class="iconfont icon-right"></i>
+                </view>
+            </view>
+        </view>
+        <view bindtap="getvou" class="coupon-box">
+            <view class="coupon-item">
+                <view class="l" wx:if="{{couponInfo==''}}">
+                    <text class="name">选择优惠券</text>
+                    <text class="txt">{{coupon}}张</text>
+                </view>
+                <view class="l" wx:else>
+                    <text class="name">已选择</text>
+                    <text class="txt">{{coupon}}张</text>
+                </view>
+                <view class="r">
+                    <i class="iconfont icon-right"></i>
+                </view>
+            </view>
+        </view>
+        <view class="order-box">
+            <view class="order-item">
+                <view class="l">
+                    <text class="name">商品合计</text>
+                </view>
+                <view class="r">
+                    <text class="txt">￥{{orderInfo.order_price}}</text>
+                </view>
+            </view>
+            <view class="order-item">
+                <view class="l">
+                    <text class="name">运费</text>
+                </view>
+                <view class="r">
+                    <text class="txt">￥{{orderInfo.freight_price}}</text>
+                </view>
+            </view>
+            <view class="order-item">
+                <view class="l">
+                    <text class="name">优惠券</text>
+                </view>
+                <view class="r">
+                    <text class="txt" wx:if="{{couponInfo==''}}">-￥0.00</text>
+                    <text class="txt" wx:else>-￥{{couponInfo.sub_price}}</text>
+                </view>
+            </view>
+            <view class="order-item">
+                <view class="l">
+                    <text class="name">会员优惠</text>
+                </view>
+                <view class="r" wx:if="{{userInfo.member=='1'}}">
+                    <text class="txt">-￥{{myo}}</text>
+                </view>
+                <view class="r" wx:else>
+                    <text class="txt">-￥0.00</text>
+                </view>
+            </view>
+            <view class="order-item" wx:if="{{sysinfo.rap_show==1}}">
+                <view class="l">
+                    <text class="name">现金账户</text>
+                    <text bindtap="raphelp" style="font-size:22rpx;color:#b4282d;padding-left:10rpx;">最高抵50%</text>
+                    <i class="iconfont icon-question-circle" style="color:#b4282d;font-size:22rpx;"></i>
+                </view>
+                <view class="r">
+                    <view style="position:absolute;right:26rpx;">
+                        <text style="color:#b4282d;padding-right:15rpx;font-size:24rpx;font-weight:bold">￥{{rapSum}}</text>
+                        <switch bindchange="rapChange" color="#b4282d" disabled="{{rapSum=='0.00'?true:false}}"></switch>
+                    </view>
+                </view>
+            </view>
+            <view class="order-item no-border">
+                <view class="l">
+                    <text class="name">支付方式</text>
+                </view>
+                <view class="r">
+                    <text class="txt" wx:if="{{couponInfo==''}}">微信支付</text>
+                </view>
+            </view>
+        </view>
+        <view class="goods-items">
+            <view class="item">
+                <view class="img">
+                    <image src="{{orderInfo.goods_image}}"></image>
+                </view>
+                <view class="info">
+                    <view class="t">
+                        <text class="name" style="width:90%;">{{orderInfo.pay_name}}</text>
+                        <text class="number">x{{orderInfo.pay_num}}</text>
+                    </view>
+                    <view class="m">{{orderInfo.pay_attr}}</view>
+                    <view class="b">￥{{order_total}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="order-total" wx:if="{{address!=''}}">
+            <view class="l">实付:￥{{order_total}}<text style="color:#333;font-size:22rpx;padding-left:20rpx;" wx:if="{{makePrice!='0.00'}}">赚￥{{makePrice}}</text>
+            </view>
+            <button class="r" formType="submit">付 款</button>
+        </view>
+        <view class="order-total" wx:else>
+            <view class="l">实付：￥{{order_total}}<text style="color:#333;font-size:22rpx;padding-left:20rpx;" wx:if="{{makePrice!='0.00'}}">赚￥{{makePrice}}</text>
+            </view>
+            <view bindtap="addAddress" class="r" style="background-color: #b4282d;color:#FFFFFF;">请先添加收货地址</view>
+        </view>
+    </form>
+</view>

@@ -1,0 +1,31 @@
+<import src="../../common/common.wxml"></import>
+<view class="container">
+    <view class="cate-nav">
+        <scroll-view class="cate-nav-body" scrollLeft="{{scrollLeft}}" scrollX="true" style="width: 750rpx;">
+            <view bindtap="switchCate" class="item {{sid==item.id?'active':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{navList}}">
+                <view class="name">{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <scroll-view scrollTop="{{scrollTop}}" scrollY="true" style="height:{{scrollHeight}};margin-top: 90rpx;">
+        <view wx:for="{{storeList}}">
+            <view bindtap="info" class="sellers" data-id="{{item.id}}">
+                <image bindtap="store" class="sellers-img" data-id="{{item.id}}" mode="aspectFill" src="{{item.logo}}"></image>
+                <text bindtap="store" class="sellersname" data-id="{{item.id}}">{{item.storename}}</text>
+                <view bindtap="store" class="compone" data-id="{{item.id}}">
+                    <template is="allStars" data="{{stars:item.score,num:item.num}}"></template>
+                </view>
+                <text class="distance">{{item.distance}}km</text>
+                <i class="iconfont icon-right" style="position: absolute;top: 120rpx;right: 30rpx;font-size:40rpx;color:#ccc"></i>
+                <view bindtap="store" class="compone1" data-id="{{item.id}}">
+                    <view class="gobyndsingle" style="width:370rpx;height:30rpx;">
+                        <i class="iconfont icon-location" style="margin-right:5rpx;"></i>{{item.address}}</view>
+                </view>
+            </view>
+            <view class="sellers rel hot_store" style="width:100%;height:350rpx;padding:0" wx:if="{{storeList==''}}">
+                <image class="ab lr" mode="aspectFill" src="../image/tie2.png" style="width:400rpx;height:300rpx;"></image>
+                <view class="ab zanwu">暂无商家</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

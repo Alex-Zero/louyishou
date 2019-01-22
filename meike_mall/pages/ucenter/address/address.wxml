@@ -1,0 +1,22 @@
+<view class="container">
+    <view class="address-list" wx:if="{{addressList.length>0}}">
+        <view bindtap="addressAddOrUpdate" class="item" data-address-id="{{item.id}}" wx:for="{{addressList}}" wx:key="{{item.id}}">
+            <view class="l">
+                <view class="name">{{item.name}}</view>
+                <view class="default" style="color:{{sysinfo.color}};border:1px solid {{sysinfo.color}}" wx:if="{{item.is_default=='1'}}">默认</view>
+            </view>
+            <view class="c">
+                <view class="mobile">{{item.mobile}}</view>
+                <view class="address">{{item.province+item.city+item.district+item.address}}</view>
+            </view>
+            <view class="r">
+                <image catchtap="deleteAddress" class="del" data-address-id="{{item.id}}" src="../../../resource/images/del-address.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="empty-view" wx:if="{{addressList.length<=0}}">
+        <image class="icon" src="../../../resource/images/address.png"></image>
+        <text class="text">收货地址在哪里</text>
+    </view>
+    <view bindtap="addressAddOrUpdate" class="add-address" data-address-id="0" style="background:{{sysinfo.color}}">新 建</view>
+</view>

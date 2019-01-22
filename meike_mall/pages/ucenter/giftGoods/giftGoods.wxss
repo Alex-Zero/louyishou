@@ -1,0 +1,1081 @@
+.container {
+    margin-bottom: 100rpx;
+}
+
+button::after {
+    content: none;
+}
+
+.img-plus-style {
+    height: 90rpx;
+    width: 90rpx;
+    position: fixed;
+    bottom: 300rpx;
+    right: 50rpx;
+    z-index: 100;
+}
+
+.img-style {
+    height: 90rpx;
+    width: 90rpx;
+    position: fixed;
+    bottom: 300rpx;
+    right: 50rpx;
+    opacity: 0;
+}
+
+.drawer_attr_box {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 400;
+    height: 900rpx;
+    background: #fff;
+}
+
+.close {
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+    width: 120rpx;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+}
+
+.drawer_attr_box .a {
+    background: #f2f2f2;
+    color: #8a8c8e;
+    font-size: 20rpx;
+    padding: 0 20rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+}
+
+.drawer_attr_box .info {
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 28rpx;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #f4f4f4;
+    align-items: center;
+}
+
+.drawer_attr_box .info .p {
+    color: #b4282d;
+}
+
+.drawer_attr_box .info .h {
+    font-size: 24rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+}
+
+.drawer_attr_box .info .a {
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx;
+    border-radius: 3px;
+    height: 37rpx;
+    width: auto;
+    color: #fff;
+    overflow: hidden;
+    background: #b4282d;
+    font-size: 24rpx;
+    margin-right: 30rpx;
+}
+
+.drawer_screen {
+    background: rgba(0,0,0,0.6);
+    z-index: 300;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.close1 {
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    color: white;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+}
+
+.goodsimgs {
+    width: 750rpx;
+    height: 750rpx;
+    position: relative;
+}
+
+.goodsimgs image {
+    width: 750rpx;
+    height: 750rpx;
+}
+
+.goodsInfo {
+    background: #fff;
+    padding: 30rpx;
+}
+
+.goodsInfo .a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.goodsInfo .a image {
+    width: 130rpx;
+    height: 35rpx;
+}
+
+.goodsInfo .a text {
+    position: absolute;
+    right: 30rpx;
+    line-height: 56rpx;
+    font-size: 24rpx;
+}
+
+.goodsInfo .b {
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.goodsInfo .b .b1 {
+    width: 88%;
+    font-weight: bold;
+    font-size: 30rpx;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.goodsInfo .b .b2 {
+    width: 12%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-left: 1px dashed #eee;
+}
+
+.goodsInfo .b .b2 image {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.goodsInfo .b .b2 text {
+    font-size: 24rpx;
+    color: #8a8c8e;
+}
+
+.service-policy {
+    width: 750rpx;
+    height: 73rpx;
+    background: #f4f4f4;
+    padding: 0 31.25rpx;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.service-policy .item {
+    background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
+    background-size: 10rpx;
+    padding-left: 15rpx;
+    display: flex;
+    align-items: center;
+    font-size: 25rpx;
+    color: #666;
+}
+
+.goods-info {
+    width: 750rpx;
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+}
+
+.goods-info .c {
+    display: block;
+    width: 718.75rpx;
+    height: 100%;
+    margin-left: 31.25rpx;
+    padding: 38rpx 31.25rpx 38rpx 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.goods-info .c text {
+    display: block;
+    width: 687.5rpx;
+    text-align: left;
+}
+
+.goods-info .name {
+    margin-bottom: 5.208rpx;
+    font-size: 41rpx;
+    overflow: hidden;
+}
+
+.goods-info .desc {
+    margin-bottom: 21rpx;
+    font-size: 24rpx;
+    line-height: 43rpx;
+    color: #999;
+}
+
+.goods-info .price {
+    height: 35rpx;
+    line-height: 35rpx;
+}
+
+.goods-info .brand {
+    margin-top: 23rpx;
+    min-height: 40rpx;
+    text-align: left;
+}
+
+.goods-info .brand text {
+    display: inline-block;
+    width: auto;
+    padding: 2px 30rpx 2px 10.5rpx;
+    line-height: 35.5rpx;
+    border: 1px solid #f48f18;
+    font-size: 25rpx;
+    color: #f48f18;
+    border-radius: 4px;
+    background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/detailTagArrow-18bee52dab.png) 95% center no-repeat;
+    background-size: 10.75rpx 18.75rpx;
+}
+
+.instr {
+    width: 750rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+    padding: 31.25rpx;
+}
+
+.instr .name {
+    width: 100%;
+}
+
+.instr .span {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    background: #fff;
+    border-top: 1rpx solid #e5e5e5;
+    margin-top: 20rpx;
+    overflow: hidden;
+}
+
+.instr .span .item {
+    padding-top: 20rpx;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.instr .span .item text {
+    padding-right: 31.25rpx;
+}
+
+.instr .span .item .a {
+    font-weight: bold;
+}
+
+.SpecText {
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    height: 37rpx;
+    color: #b4282d;
+    overflow: hidden;
+    font-size: 24rpx;
+    margin-right: 30rpx;
+}
+
+.section-nav {
+    width: 750rpx;
+    height: 108rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.section-nav .t {
+    float: left;
+    width: 600rpx;
+    height: 108rpx;
+    line-height: 108rpx;
+    font-size: 29rpx;
+    color: #333;
+    margin-left: 31.25rpx;
+}
+
+.section-nav .i {
+    float: right;
+    width: 52rpx;
+    height: 52rpx;
+    margin-right: 16rpx;
+    margin-top: 28rpx;
+}
+
+.section-act .t {
+    float: left;
+    display: flex;
+    align-items: center;
+    width: 600rpx;
+    height: 108rpx;
+    overflow: hidden;
+    line-height: 108rpx;
+    font-size: 29rpx;
+    color: #999;
+    margin-left: 31.25rpx;
+}
+
+.section-act .label {
+    color: #999;
+}
+
+.section-act .tag {
+    display: flex;
+    align-items: center;
+    padding: 0 10rpx;
+    border-radius: 3px;
+    height: 37rpx;
+    width: auto;
+    color: #fff;
+    overflow: hidden;
+    background: #b4282d;
+    font-size: 24rpx;
+    margin: 0 20rpx;
+}
+
+.section-act .text {
+    display: flex;
+    align-items: center;
+    height: 37rpx;
+    width: auto;
+    overflow: hidden;
+    color: #333;
+    font-size: 28rpx;
+}
+
+.comments {
+    width: 100%;
+    height: auto;
+    padding-left: 30rpx;
+    background: #fff;
+    margin: 20rpx 0;
+}
+
+.comments .h {
+    height: 102.5rpx;
+    line-height: 100.5rpx;
+    width: 718.75rpx;
+    padding-right: 16rpx;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.comments .h .t {
+    display: block;
+    float: left;
+    width: 50%;
+    font-size: 29rpx;
+    color: #333;
+}
+
+.comments .h .i {
+    font-size: 29rpx;
+    display: block;
+    float: right;
+    width: 164rpx;
+    height: 100.5rpx;
+    line-height: 100.5rpx;
+    background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/address-right-990628faa7.png) right center no-repeat;
+    background-size: 52rpx;
+    color: #8a8c8e;
+}
+
+.comments .b {
+    height: auto;
+    width: 720rpx;
+}
+
+.comments .item {
+    height: auto;
+    width: 720rpx;
+    overflow: hidden;
+}
+
+.comments .info {
+    height: 127rpx;
+    width: 100%;
+    padding: 33rpx 0 27rpx 0;
+}
+
+.comments .user {
+    float: left;
+    width: auto;
+    height: 67rpx;
+    line-height: 67rpx;
+    font-size: 0;
+}
+
+.comments .user image {
+    float: left;
+    width: 67rpx;
+    height: 67rpx;
+    margin-right: 17rpx;
+    border-radius: 50%;
+}
+
+.comments .user text {
+    display: inline-block;
+    width: auto;
+    height: 66rpx;
+    overflow: hidden;
+    font-size: 29rpx;
+    line-height: 66rpx;
+}
+
+.comments .time {
+    display: block;
+    float: right;
+    width: auto;
+    height: 67rpx;
+    line-height: 67rpx;
+    color: #7f7f7f;
+    font-size: 25rpx;
+    margin-right: 30rpx;
+}
+
+.comments .content {
+    width: 720rpx;
+    padding-right: 30rpx;
+    line-height: 45.8rpx;
+    font-size: 29rpx;
+    margin-bottom: 24rpx;
+}
+
+.comments .imgs {
+    width: 720rpx;
+    height: auto;
+    margin-bottom: 25rpx;
+}
+
+.comments .imgs .img {
+    height: 150rpx;
+    width: 150rpx;
+    margin-right: 28rpx;
+}
+
+.comments .spec {
+    width: 720rpx;
+    padding-right: 30rpx;
+    line-height: 30rpx;
+    font-size: 24rpx;
+    color: #999;
+    margin-bottom: 30rpx;
+}
+
+.goods-attr {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding: 0 31.25rpx 25rpx 31.25rpx;
+    background: #fff;
+}
+
+.goods-attr .t {
+    width: 687.5rpx;
+    height: 104rpx;
+    line-height: 104rpx;
+    font-size: 29rpx;
+}
+
+.goods-attr .item {
+    width: 687.5rpx;
+    height: 68rpx;
+    padding: 11rpx 20rpx;
+    margin-bottom: 11rpx;
+    background: #f7f7f7;
+    font-size: 38.5rpx;
+}
+
+.goods-attr .left {
+    float: left;
+    font-size: 25rpx;
+    width: 134rpx;
+    height: 45rpx;
+    line-height: 45rpx;
+    overflow: hidden;
+    color: #999;
+}
+
+.goods-attr .right {
+    float: left;
+    font-size: 30rpx;
+    margin-left: 20rpx;
+    width: 480rpx;
+    height: 45rpx;
+    line-height: 45rpx;
+    overflow: hidden;
+    color: #333;
+}
+
+.detail {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+}
+
+.detail image {
+    width: 750rpx;
+    display: block;
+}
+
+.common-problem {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+}
+
+.common-problem .h {
+    position: relative;
+    height: 145.5rpx;
+    width: 750rpx;
+    padding: 56.25rpx 0;
+    background: #fff;
+    text-align: center;
+}
+
+.common-problem .h .line {
+    display: inline-block;
+    position: absolute;
+    top: 72rpx;
+    left: 0;
+    z-index: 2;
+    height: 1px;
+    margin-left: 225rpx;
+    width: 300rpx;
+    background: #ccc;
+}
+
+.common-problem .h .title {
+    display: inline-block;
+    position: absolute;
+    top: 56.125rpx;
+    left: 0;
+    z-index: 3;
+    height: 33rpx;
+    margin-left: 285rpx;
+    width: 180rpx;
+    background: #fff;
+}
+
+.common-problem .b {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding: 0rpx 30rpx;
+    background: #fff;
+}
+
+.common-problem .item {
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 25rpx;
+}
+
+.common-problem .question-box .spot {
+    float: left;
+    display: block;
+    height: 8rpx;
+    width: 8rpx;
+    background: #b4282d;
+    border-radius: 50%;
+    margin-top: 11rpx;
+}
+
+.common-problem .question-box .question {
+    float: left;
+    line-height: 30rpx;
+    padding-left: 8rpx;
+    display: block;
+    font-size: 26rpx;
+    padding-bottom: 15rpx;
+    color: #303030;
+}
+
+.common-problem .answer {
+    line-height: 36rpx;
+    padding-left: 16rpx;
+    font-size: 26rpx;
+    color: #787878;
+}
+
+.related-goods {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+}
+
+.related-goods .h {
+    position: relative;
+    height: 145.5rpx;
+    width: 750rpx;
+    padding: 56.25rpx 0;
+    background: #fff;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.related-goods .h .line {
+    display: inline-block;
+    position: absolute;
+    top: 72rpx;
+    left: 0;
+    z-index: 2;
+    height: 1px;
+    margin-left: 225rpx;
+    width: 300rpx;
+    background: #ccc;
+}
+
+.related-goods .h .title {
+    display: inline-block;
+    position: absolute;
+    top: 56.125rpx;
+    left: 0;
+    z-index: 3;
+    height: 33rpx;
+    margin-left: 285rpx;
+    width: 180rpx;
+    background: #fff;
+}
+
+.a-section {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    color: #333;
+    margin-top: 20rpx;
+}
+
+.a-section .h {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 130rpx;
+}
+
+.a-section .h .txt {
+    padding-right: 30rpx;
+    background-size: 16.656rpx 27rpx;
+    display: inline-block;
+    height: 36rpx;
+    font-size: 33rpx;
+    line-height: 36rpx;
+}
+
+.a-new {
+    margin-top: 94rpx;
+    height: auto;
+    overflow: hidden;
+}
+
+.a-new .h {
+    height: 145rpx;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.a-new .h .name {
+    display: block;
+    height: 35rpx;
+    margin-bottom: 18rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.a-new .h .desc {
+    display: block;
+    height: 24rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.a-new .b {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding: 0 5rpx 0 8.5rpx;
+}
+
+.a-new .b .item {
+    float: left;
+    width: 335rpx;
+    height: 495rpx;
+    margin: 0 17.5rpx;
+}
+
+.a-new .b .item-b {
+    margin-left: 42rpx;
+}
+
+.a-new .b .img {
+    width: 335rpx;
+    height: 335rpx;
+    background: #f4f4f4;
+}
+
+.a-new .b .span {
+    background: #b4282d;
+    color: #fff;
+    font-size: 20rpx;
+    padding: 2rpx 8rpx;
+}
+
+.a-new .b .name {
+    display: block;
+    width: 335rpx;
+    height: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.a-new .b .price {
+    line-height: 30rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #b4282d;
+}
+
+.a-new .b .vip_price {
+    padding-left: 10rpx;
+    line-height: 30rpx;
+    font-size: 20rpx;
+}
+
+.a-new .b .price_o {
+    line-height: 30rpx;
+    font-size: 26rpx;
+    text-decoration: line-through;
+    color: #ccc;
+    padding-left: 10rpx;
+}
+
+.related-goods .b {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding: 0 31rpx 31rpx 31rpx;
+}
+
+.related-goods .b .item {
+    float: left;
+    width: 302rpx;
+    height: 100%;
+    margin-top: 10rpx;
+    margin-left: 21rpx;
+    margin-right: 21rpx;
+}
+
+.related-goods .b .item-b {
+    margin-left: 42rpx;
+}
+
+.related-goods .b .img {
+    width: 302rpx;
+    height: 302rpx;
+    background: #f4f4f4;
+}
+
+.related-goods .b .span {
+    background: #b4282d;
+    color: #fff;
+    font-size: 24rpx;
+    padding: 0 8rpx;
+}
+
+.related-goods .b .name {
+    display: block;
+    width: 302rpx;
+    height: 35rpx;
+    margin-bottom: 12rpx;
+    font-size: 28rpx;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.related-goods .b .price {
+    line-height: 30rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #b4282d;
+}
+
+.related-goods .b .vip_price {
+    padding-left: 10rpx;
+    line-height: 30rpx;
+    font-size: 20rpx;
+}
+
+.related-goods .b .price_o {
+    line-height: 30rpx;
+    font-size: 26rpx;
+    text-decoration: line-through;
+    color: #ccc;
+    padding-left: 10rpx;
+}
+
+.bottom-btn {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 750rpx;
+    height: 100rpx;
+    display: flex;
+    background: #fff;
+}
+
+.bottom-btn .l {
+    float: left;
+    height: 100rpx;
+    width: 120rpx;
+    border: 1px solid #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-btn .l.l-collect {
+    border-right: none;
+    border-left: none;
+    text-align: center;
+}
+
+.bottom-btn .l.l-cart .box {
+    position: relative;
+    height: 60rpx;
+    width: 60rpx;
+}
+
+.bottom-btn .l.l-cart .cart-count {
+    height: 28rpx;
+    width: 28rpx;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #b4282d;
+    text-align: center;
+    font-size: 18rpx;
+    color: #fff;
+    line-height: 28rpx;
+    border-radius: 50%;
+}
+
+.bottom-btn .l.l-cart .icon {
+    position: absolute;
+    top: 10rpx;
+    left: 0;
+}
+
+.bottom-btn .l .icon {
+    display: block;
+    height: 44rpx;
+    width: 44rpx;
+}
+
+.bottom-btn .c {
+    float: left;
+    height: 100rpx;
+    line-height: 96rpx;
+    flex: 1;
+    text-align: center;
+    color: #333;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.bottom-btn .r {
+    border: 1px solid #b4282d;
+    background: #b4282d;
+    float: left;
+    height: 100rpx;
+    line-height: 96rpx;
+    flex: 1;
+    text-align: center;
+    color: #fff;
+}
+
+@import "../../../lib/wxParse/wxParse.wxss";
+
+.attr-pop {
+    padding: 31.25rpx;
+}
+
+.attr-pop .img-info {
+    width: 687.5rpx;
+    height: 177rpx;
+    overflow: hidden;
+    margin-bottom: 41.5rpx;
+}
+
+.attr-pop .img {
+    float: left;
+    height: 177rpx;
+    width: 177rpx;
+    background: #f4f4f4;
+    margin-right: 31.25rpx;
+}
+
+.attr-pop .info {
+    float: left;
+    height: 177rpx;
+    display: flex;
+    align-items: center;
+}
+
+.attr-pop .p {
+    font-size: 33rpx;
+    color: #333;
+    height: 33rpx;
+    line-height: 33rpx;
+    margin-bottom: 10rpx;
+}
+
+.attr-pop .a {
+    font-size: 29rpx;
+    color: #333;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.spec-con {
+    width: 100%;
+    height: 520rpx;
+    overflow: hidden;
+}
+
+.spec-con .name {
+    height: 32rpx;
+    margin-bottom: 22rpx;
+    font-size: 29rpx;
+    color: #333;
+}
+
+.spec-con .values {
+    height: auto;
+    margin-bottom: 31.25rpx;
+    font-size: 0;
+}
+
+.spec-con .value {
+    display: inline-block;
+    height: 62rpx;
+    padding: 0 35rpx;
+    line-height: 56rpx;
+    text-align: center;
+    margin-right: 25rpx;
+    margin-bottom: 16.5rpx;
+    border: 1px solid #333;
+    font-size: 25rpx;
+    color: #333;
+}
+
+.spec-con .value.disable {
+    border: 1px solid #ccc;
+    color: #ccc;
+}
+
+.spec-con .value.selected {
+    border: 1px solid #b4282d;
+    color: #b4282d;
+}
+
+.number-item .selnum {
+    width: 322rpx;
+    height: 71rpx;
+    border: 1px solid #ccc;
+    display: flex;
+}
+
+.number-item .cut {
+    width: 93.75rpx;
+    height: 100%;
+    text-align: center;
+    line-height: 65rpx;
+}
+
+.number-item .number {
+    flex: 1;
+    height: 100%;
+    text-align: center;
+    line-height: 68.75rpx;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    float: left;
+}
+
+.number-item .add {
+    width: 93.75rpx;
+    height: 100%;
+    text-align: center;
+    line-height: 65rpx;
+}
+
+.attr1 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-top: 1px solid #f4f4f4;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.attr2 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-top: 1px solid #f4f4f4;
+    z-index: 502;
+    background: #b4282d;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}

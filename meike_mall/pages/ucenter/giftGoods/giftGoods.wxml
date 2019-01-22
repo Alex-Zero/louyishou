@@ -1,0 +1,64 @@
+<import src="../../common/common.wxml"></import>
+<scroll-view class="container" scrollY="true">
+    <block wx:if="{{!openAttr}}">
+        <import src="../../../lib/wxParse/wxParse.wxml"></import>
+        <view style="position:relative">
+            <swiper autoplay="{{autoplay}}" circular="true" class="goodsimgs" duration="1000" indicatorActiveColor="#fff" indicatorColor="#ccc" indicatorDots="{{dots}}" interval="3000">
+                <swiper-item wx:for="{{goods.list_pic_url}}" wx:key="{{index}}">
+                    <block wx:if="{{index==0}}">
+                        <image mode="aspectFill" src="{{item}}"></image>
+                        <image bindtap="vplay" src="../../../resource/images/play.png" style="position:absolute;width:100rpx;height:100rpx;left:325rpx;top:325rpx;" wx:if="{{goods.video_url!=''}}"></image>
+                    </block>
+                    <image backgroundSize="cover" mode="aspectFill" src="{{item}}" wx:else></image>
+                </swiper-item>
+                <view catchtouchmove="preventD" hidden="{{hide}}" style="width:750rpx;height:750rpx;position:absolute;top:0;background:#000">
+                    <video autoplay="{{videoauto}}" id="video" src="{{videosrc}}" style="width:750rpx;height:450rpx;margin-top:150rpx;"></video>
+                    <view bindtap="close" class="close1">
+                        <i class="iconfont icon-close" style="font-size:28rpx;"></i>关闭
+        </view>
+                </view>
+            </swiper>
+            <view class="service-policy">
+                <view class="item" wx:for="{{sysinfo.labelArr}}">{{item}}</view>
+            </view>
+            <view class="goods-info">
+                <view class="c">
+                    <text class="name">{{goods.name}}</text>
+                    <view class="desc">{{goods.goods_brief}}</view>
+                    <view class="price">
+                        <span style="font-size:24rpx;color:{{sysinfo.color||'#b4282d'}}">￥</span>
+                        <span style="font-size: 45rpx;color:{{sysinfo.color||'#b4282d'}};font-weight:bold">{{goods.price}}</span>
+                    </view>
+                    <view class="brand" wx:if="{{brand.name}}">
+                        <navigator hoverClass="none" url="../brandDetail/brandDetail?id={{brand.id}}">
+                            <text>{{brand.name}}</text>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            <view class="detail">
+                <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}"></template>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<view class="bottom-btn">
+    <view bindtap="index" class="l l-collect" style="border-right: 1px solid #f4f4f4;">
+        <image class="icon" src="../../../resource/images/home.png"></image>
+    </view>
+    <button class="l l-collect" openType="contact" style="background:#fff;">
+        <image class="icon" src="../../../resource/images/kefu.png"></image>
+    </button>
+    <view bindtap="pay" class="r" style="background:{{sysinfo.color}};border: 1px solid {{sysinfo.color}};">立即购买</view>
+</view>
+<view>
+    <button animation="{{animCollect}}" bindtap="collect" style="background:#f4f4f4;width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;position: fixed;bottom: 300rpx;right: 50rpx;">
+        <i class="iconfont icon-skin" style="font-size:52rpx;color:#707070"></i>
+    </button>
+    <button animation="{{animTranspond}}" bindtap="cotranspondllect" openType="share" style="background:#f4f4f4;width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;position: fixed;bottom: 300rpx;right: 50rpx;">
+        <i class="iconfont icon-share" style="font-size:52rpx;color:#707070"></i>
+    </button>
+    <button animation="{{animPlus}}" bindtap="plus" style="background:{{sysinfo.color||'#b4282d'}};width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;position: fixed;bottom: 300rpx;right: 50rpx;">
+        <i class="iconfont icon-plus" style="font-size:52rpx;color:#fff"></i>
+    </button>
+</view>

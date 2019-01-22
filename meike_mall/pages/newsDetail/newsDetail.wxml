@@ -1,0 +1,13 @@
+<import src="../../lib/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="title">
+        <text style="font-size:40rpx;">{{news.title}}</text>
+    </view>
+    <view class="info">
+        <text>发布时间：{{news.time}}</text>
+        <text>阅读量：{{news.num}}</text>
+    </view>
+    <scroll-view class="content">
+        <template is="wxParse" data="{{wxParseData:article1.nodes}}"></template>
+    </scroll-view>
+</view>

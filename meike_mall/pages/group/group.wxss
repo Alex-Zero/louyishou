@@ -1,0 +1,117 @@
+.group-title {
+    padding: 31.25rpx;
+    color: #b4282d;
+}
+
+.group-title view {
+    display: flex;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.group-title view text {
+    flex-grow: 1;
+    height: 100%;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.group-title view text.active {
+    color: #b4282d;
+    border: 1px solid #b4282d;
+}
+
+.group-goods {
+    background: #fff;
+}
+
+.group-goods .item {
+    display: flex;
+    align-items: center;
+    height: 300rpx;
+    margin-left: 31.25rpx;
+    padding-right: 31.25rpx;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.group-goods .item .img {
+    height: 235rpx;
+    width: 235rpx;
+    background: #f4f4f4;
+    position: relative;
+}
+
+.group-goods .item .img image {
+    height: 235rpx;
+    width: 235rpx;
+}
+
+.group-goods .item .img .span {
+    position: absolute;
+    height: 30rpx;
+    line-height: 30rpx;
+    top: 20rpx;
+    padding-left: 10rpx;
+    left: 0;
+    font-size: 20rpx;
+    color: #fff;
+    width: 85rpx;
+    background: #b4282d;
+    border-radius: 0 15rpx 15rpx 0;
+}
+
+.group-goods .item .info {
+    flex: 1;
+    height: 235rpx;
+    margin-left: 20rpx;
+}
+
+.group-goods .item .t .name {
+    color: #333;
+    font-size: 30rpx;
+}
+
+.group-goods .item .number {
+    height: 43rpx;
+    text-align: left;
+    line-height: 43rpx;
+    color: #333;
+    font-size: 28rpx;
+}
+
+.group-goods .item .i {
+    height: 40rpx;
+}
+
+.group-goods .item .i image {
+    height: 33rpx;
+    width: 33rpx;
+    border-radius: 50%;
+    margin-right: 8rpx;
+}
+
+.group-goods .item .attr {
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #666;
+    font-size: 25rpx;
+}
+
+.group-goods .item .attr .b {
+    float: right;
+    background: #b4282d;
+    padding: 0 20rpx;
+    color: #fff;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+}
+
+.group-goods .item .price {
+    height: 30rpx;
+    line-height: 30rpx;
+    color: #b4282d;
+    font-size: 34rpx;
+    padding-top: 5rpx;
+    margin-bottom: 15rpx;
+}

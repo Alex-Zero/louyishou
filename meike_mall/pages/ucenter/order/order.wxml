@@ -1,0 +1,96 @@
+<import src="../../common/common.wxml"></import>
+<view class="cate">
+    <view bindtap="catClick" class="cate-item {{currentTabsIndex==10?'hover':''}}" data-sid="10">
+    全部
+  </view>
+    <view bindtap="catClick" class="cate-item {{currentTabsIndex==0?'hover':''}}" data-sid="0">
+    待付款
+  </view>
+    <view bindtap="catClick" class="cate-item {{currentTabsIndex==1?'hover':''}}" data-sid="1">
+    待发货
+  </view>
+    <view bindtap="catClick" class="cate-item {{currentTabsIndex==2?'hover':''}}" data-sid="2">
+    待收货
+  </view>
+    <view bindtap="catClick" class="cate-item {{currentTabsIndex==3?'hover':''}}" data-sid="3">
+    已完成
+  </view>
+</view>
+<view class="blank"></view>
+<view class="orders">
+    <block wx:for="{{orderList}}" wx:key="{{item.id}}">
+        <navigator class="order" url="../orderDetail/orderDetail?order_sn={{item.order_sn}}">
+            <view class="h">
+                <view class="l">订单编号：{{item.order_sn}}</view>
+                <view class="r">
+                    <text style="position:absolute;right:40rpx;color:{{sysinfo.color||'#b4282d'}}" wx:if="{{item.order_status=='0'}}">待付款</text>
+                    <text style="position:absolute;right:40rpx;color:{{sysinfo.color||'#b4282d'}}" wx:if="{{item.order_status=='1'}}">待发货</text>
+                    <text style="position:absolute;right:40rpx;color:{{sysinfo.color||'#b4282d'}}" wx:if="{{item.order_status=='2'}}">已发货</text>
+                    <text style="position:absolute;right:40rpx;color:#8a8c8e" wx:if="{{item.order_status=='3'}}">交易成功</text>
+                    <text style="position:absolute;right:40rpx;color:{{sysinfo.color||'#b4282d'}}" wx:if="{{item.order_status=='4'}}">处理中</text>
+                    <text style="position:absolute;right:40rpx;color:#8a8c8e" wx:if="{{item.order_status=='5'}}">已退款</text>
+                    <text style="position:absolute;right:40rpx;color:#8a8c8e" wx:if="{{item.order_status=='7'}}">交易关闭</text>
+                </view>
+            </view>
+            <view class="goods" wx:for="{{item.goodsList}}" wx:for-item="gitem" wx:key="{{gitem.id}}">
+                <view class="img">
+                    <image src="{{gitem.goods_image}}"></image>
+                </view>
+                <view class="info">
+                    <text class="name">{{gitem.goods_name}}</text>
+                    <text style="height:33rpx;font-size:28rpx;line-height:33rpx;">{{gitem.pay_attr}}</text>
+                    <text class="number">共{{gitem.number}}件商品</text>
+                </view>
+                <view class="status"></view>
+            </view>
+        </navigator>
+        <view class="item-c" wx:if="{{item.order_status=='0'}}">
+            <view class="l">实付：
+        <text class="cost">￥{{item.actual_price}}</text>
+            </view>
+            <view class="r">
+                <view bindtap="buttonClick" class="btn" data-id="{{index}}" data-ordersn="{{item.order_sn}}" data-sid="cancel">取消订单</view>
+                <view bindtap="buttonClick" class="btn active" data-attr="{{item.pay_attr}}" data-id="{{index}}" data-num="{{item.pay_num}}" data-ordersn="{{item.order_sn}}" data-pid="{{item.actual_price}}" data-sid="pay" data-tid="{{item.pay_name}}">去付款</view>
+            </view>
+        </view>
+        <view class="item-c" wx:if="{{item.order_status=='1'}}">
+            <view class="l">实付：
+        <text class="cost" style="color:{{sysinfo.color}}">￥{{item.actual_price}}</text>
+            </view>
+            <view class="r">
+                <view bindtap="buttonClick" class="btn active" data-attr="{{item.pay_attr}}" data-id="{{index}}" data-num="{{item.pay_num}}" data-ordersn="{{item.order_sn}}" data-pid="{{item.actual_price}}" data-sid="refund" data-tid="{{item.pay_name}}" style="background:{{sysinfo.color}}">申请退款</view>
+            </view>
+        </view>
+        <view class="item-c" wx:elif="{{item.order_status=='2'}}">
+            <view class="l">实付:
+        <text class="cost" style="color:{{sysinfo.color}}">￥{{item.actual_price}}</text>
+            </view>
+            <view class="r">
+                <view bindtap="buttonClick" class="btn" data-id="{{index}}" data-ordersn="{{item.order_sn}}" data-sid="express" style="padding-left:0">查看物流</view>
+                <view bindtap="buttonClick" class="btn" data-id="{{index}}" data-ordersn="{{item.order_sn}}" data-sid="refund" style="padding-left:0">申请退款</view>
+                <view bindtap="buttonClick" class="btn active" data-id="{{index}}" data-ordersn="{{item.order_sn}}" data-pid="{{item.actual_price}}" data-sid="confirm" data-tid="{{item.pay_name}}" style="background:{{sysinfo.color}}">确认收货</view>
+            </view>
+        </view>
+    </block>
+    <view class="info-no" wx:if="{{orderList==''}}">暂无数据</view>
+</view>
+<view catchtouchmove="preventD" class="view-center" hidden="{{reason}}" style="position:fixed;top:0px;left:0px;background:rgba(0,0,0,0.5);width:{{windowWidth}}px;height:{{windowHeight}}px;z-index:1600">
+    <view style="position:fixed;top:220rpx;left:40px;background:#fff;width:{{windowWidth-80}}px;height:650rpx;z-index:201;border-radius:10rpx;">
+        <form bindreset="cancel" bindsubmit="confirm">
+            <view style="margin:20rpx;background:#fff;border-radius:10rpx">
+                <view style="padding-left:20rpx;font-size:32rpx;">#请填写退款原因#</view>
+                <view style="padding-left:20rpx;font-size:20rpx;border-bottom:1px solid #eee;padding-bottom:20rpx;color:#8a8c8e">(有助于我们快速处理您的退款申请)</view>
+                <radio-group bindchange="radioChange" style="width:100%;">
+                    <label style="display:flex;flex-direction:row;border-bottom:1px solid #eee;padding:20rpx;" wx:for="{{reasonList}}" wx:key="{{index}}">
+                        <view style="width:90%;">{{item.name}}</view>
+                        <radio color="#b4282d" value="{{index}}"></radio>
+                    </label>
+                </radio-group>
+                <view class="flex-row" style="margin-top:50rpx;">
+                    <button formType="reset" style="width:45%;background:#333;color:#fff;height:80rpx;line-height:80rpx;font-size:28rpx;">取消</button>
+                    <button formType="submit" style="width:45%;background:#b4282d;color:#fff;height:80rpx;line-height:80rpx;font-size:28rpx;">提交</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>

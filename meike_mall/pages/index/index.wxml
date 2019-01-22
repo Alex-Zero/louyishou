@@ -1,0 +1,401 @@
+<import src="../common/common.wxml"></import>
+<view class="container">
+    <view class="swiper">
+        <template is="swiper" data="{{slide:slide}}"></template>
+        <view class="map">
+            <i class="iconfont icon-location" style="color:#fff"></i>
+            <text style="color:#fff;font-size:26rpx">{{sysinfo.city}}</text>
+        </view>
+        <navigator class="search" hoverClass="none" url="../search/search">
+            <icon color="#ccc" size="18" type="search"></icon>
+            <input class="search1" disabled="true" maxlength="100" placeholder="搜索商品，共{{goodsCount.nums}}款好物" placeholderStyle="color:#ccc" type="text" wx:if="{{userInfo.store_id!=''}}"></input>
+            <input class="search2" disabled="true" maxlength="100" placeholder="搜索商品，共{{goodsCount.nums}}款好物" placeholderStyle="color:#ccc" type="text" wx:else></input>
+        </navigator>
+        <view class="store" wx:if="{{userInfo.store_id!=''}}">
+            <image src="{{userInfo.store_avatar}}"></image>
+        </view>
+    </view>
+    <view class="ad">
+        <image class="ad-icon" mode="scaleToFill" src="../../resource/images/news.png"></image>
+        <swiper autoplay="true" circular="true" class="newest_content gobyndsingle" interval="3000" vertical="true" wx:if="{{news.length>0}}">
+            <swiper-item wx:for="{{news}}">
+                <navigator class="adinfo gobyndsingle" url="../news/news">
+                    <rich-text nodes="{{item.title}}"></rich-text>
+                </navigator>
+            </swiper-item>
+        </swiper>
+        <view class="adinfo gobyndsingle" wx:else>暂无快报</view>
+    </view>
+    <view class="m-menu1" style="margin-bottom:20rpx;" wx:if="{{channel.length>0&&channel.length<6}}">
+        <navigator class="item" hoverClass="none" url="{{item.url}}" wx:for="{{channel}}" wx:key="{{item.id}}">
+            <image backgroundSize="cover" src="{{item.icon_url}}"></image>
+            <text>{{item.name}}</text>
+        </navigator>
+    </view>
+    <view class="m-menu2" style="margin-bottom:20rpx;" wx:if="{{channel.length>5}}">
+        <navigator class="item" hoverClass="none" url="{{item.url}}" wx:for="{{channel}}" wx:key="{{item.id}}">
+            <image backgroundSize="cover" src="{{item.icon_url}}"></image>
+            <text>{{item.name}}</text>
+        </navigator>
+    </view>
+    <view class="magic" wx:if="{{magic.length>0}}">
+        <navigator style="height:100%;" wx:if="{{item.type==1}}">
+            <image mode="widthFix" src="{{item[0].primary_pic_url}}" style="width:100%;"></image>
+        </navigator>
+        <view style="display:flex;flex-driection:row;width:100%;" wx:if="{{item.type==2}}">
+            <navigator>
+                <image mode="aspectFill" src="{{item[0].primary_pic_url}}" style="width:50%;height:300rpx"></image>
+            </navigator>
+            <navigator>
+                <image mode="aspectFill" src="{{item[1].primary_pic_url}}" style="width:50%;height:300rpx;"></image>
+            </navigator>
+        </view>
+        <block wx:if="{{item.type==3}}">
+            <navigator class="a">
+                <image mode="aspectFill" src="{{item[0].primary_pic_url}}"></image>
+            </navigator>
+            <view class="row">
+                <navigator class="b">
+                    <image mode="aspectFill" src="{{item[1].primary_pic_url}}" style="width:100%;height:100%"></image>
+                </navigator>
+                <navigator class="c">
+                    <image mode="aspectFill" src="{{item[2].primary_pic_url}}" style="width:100%;height:100%"></image>
+                </navigator>
+            </view>
+        </block>
+        <view class="home-hot" wx:if="{{item.type==4}}">
+            <navigator class="hot-left" url="../hot/hot">
+                <image mode="" src="{{activityUrls[0]}}"></image>
+            </navigator>
+            <view class="hot-right">
+                <navigator class="hot-right-top" url="../activity/tenGroup/tenGroup">
+                    <image mode="aspectFit" src="{{activityUrls[1]}}"></image>
+                </navigator>
+                <view class="hot-right-btm">
+                    <navigator class="hot-right-btm-left" url="../activity/discount/discount">
+                        <image mode="aspectFit" src="{{activityUrls[2]}}"></image>
+                    </navigator>
+                    <navigator class="hot-right-btm-right" url="../activity/lists/lists">
+                        <image mode="aspectFit" src="{{activityUrls[3]}}"></image>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="a-section a-topic" wx:if="{{topics.length>0}}">
+        <view class="h">
+            <view>
+                <navigator hoverClass="none" url="../topic/topic">
+                    <text class="txt">专题推荐</text>
+                    <i class="iconfont icon-right" style="font-size:33rpx;color:#333"></i>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <scroll-view class="list" scrollX="true">
+                <view class="item" wx:for="{{topics}}" wx:key="{{item.id}}">
+                    <navigator hoverClass="none" url="../topicDetail/topicDetail?id={{item.id}}">
+                        <image backgroundSize="cover" class="img" src="{{item.scene_pic_url}}"></image>
+                        <view class="info">
+                            <text class="title">{{item.title}}</text>
+                            <text class="price" style="color:{{sysinfo.color}}">{{item.price_info}}元起</text>
+                        </view>
+                    </navigator>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="a-section a-brand" wx:if="{{brand.length>0}}">
+        <view class="h">
+            <navigator hoverClass="none" url="../brand/brand">
+                <text class="txt">品牌制造商直供</text>
+                <i class="iconfont icon-right" style="font-size:33rpx;color:#333"></i>
+            </navigator>
+        </view>
+        <view class="b">
+            <view class="item item-1" wx:for="{{brand}}" wx:key="item.id">
+                <navigator url="../brandDetail/brandDetail?id={{item.id}}">
+                    <view class="wrap">
+                        <image class="img" mode="aspectFill" src="{{item.new_pic_url}}"></image>
+                        <view class="mt">
+                            <text class="brand">{{item.name}}</text>
+                            <text class="price" style="color:{{sysinfo.color}}">{{item.floor_price}}</text>
+                            <text class="unit">元起</text>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="a-section a-popular" wx:if="{{newGoods.length>0&&sysinfo.product==0}}">
+        <view class="h">
+            <view>
+                <navigator hoverClass="none" url="../newGoods/newGoods">
+                    <text class="txt">新品首发</text>
+                    <i class="iconfont icon-right" style="font-size:33rpx;color:#333"></i>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{newGoods}}" wx:key="{{item.id}}">
+                <navigator url="../goods/goods?id={{item.id}}">
+                    <image backgroundSize="cover" class="img" src="{{item.primary_pic_url}}"></image>
+                    <view class="right">
+                        <view class="text" style="justify-content: space-around;">
+                            <view>
+                                <text class="name">{{item.name}}</text>
+                                <text class="desc">{{item.goods_brief}}</text>
+                                <text class="desc">已售：{{item.sell_volume}}{{item.goods_unit}}</text>
+                            </view>
+                            <view>
+                                <view>
+                                    <image src="{{item.avatar}}" style="width:40rpx;height:40rpx;border-radius:50%;border:1rpx solid #fff;" wx:for="{{item.headNav}}"></image>
+                                </view>
+                                <view style="display:flex;flex-direction:row;align-items:center；margin-bottom:20rpx;">
+                                    <text style="color:#f2312e;height:32rpx;line-height:32rpx;text-align:center;font-size:20rpx;border-radius:5rpx;background: #ffe6de;padding:0 10rpx;margin-right:15rpx">佣金 ￥30.00</text>
+                                    <text style="color:#f5a623;height:32rpx;line-height:32rpx;text-align:center;font-size:20rpx;border-radius:5rpx;background: #fdeaca;padding:0 10rpx;" wx:if="{{sysinfo.rap_show==1&&item.is_plugin==2}}">返 ￥{{item.plugin_price}}</text>
+                                </view>
+                                <view style="display:flex;flex-direction:row;align-items:center">
+                                    <text style="font-size:22rpx;color:#ee0000;padding-top:10rpx;">￥</text>
+                                    <text class="price">{{item.members_price}}</text>
+                                    <text style="font-size:21rpx;color:#6b6c6e;margin-left:15rpx;padding-top:10rpx;">非会员价 ￥{{item.retail_price}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="a-section a-new" wx:if="{{newGoods.length>0&&sysinfo.product==1}}">
+        <view class="h">
+            <view>
+                <navigator hoverClass="none" url="../newGoods/newGoods">
+                    <text class="txt">新品首发</text>
+                    <i class="iconfont icon-right" style="font-size:33rpx;color:#333"></i>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{newGoods}}" wx:key="{{item.id}}">
+                <navigator hoverClass="none" url="../goods/goods?id={{item.id}}">
+                    <image backgroundSize="cover" class="img" mode="aspectFill" src="{{item.primary_pic_url}}"></image>
+                    <view style="display:flex;flex-direction:row;">
+                        <block wx:if="{{userInfo.is_people=='2'}}">
+                            <text class="span" wx:if="{{item.is_distribution=='1'}}">佣金 ￥{{item.fx_total}}</text>
+                        </block>
+                        <text class="rap" wx:if="{{sysinfo.rap_show==1&&item.is_plugin==2}}">返 ￥{{item.plugin_price}}</text>
+                    </view>
+                    <text class="name">{{item.name}}</text>
+                    <text class="price" style="color:{{sysinfo.color}}">{{item.members_price}}</text>
+                    <text class="vip_price">非会员价:￥{{item.retail_price}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="a-section a-popular" wx:if="{{newGoods.length>0&&sysinfo.sentiment==0}}">
+        <view class="h">
+            <view>
+                <navigator hoverClass="none" url="../hotGoods/hotGoods">
+                    <text class="txt">人气推荐</text>
+                    <i class="iconfont icon-right" style="font-size:33rpx;color:#333"></i>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{hotGoods}}" wx:key="{{item.id}}">
+                <navigator url="../goods/goods?id={{item.id}}">
+                    <image backgroundSize="cover" class="img" src="{{item.primary_pic_url}}"></image>
+                    <view class="right">
+                        <view class="text" style="justify-content: space-around;">
+                            <view>
+                                <text class="name">{{item.name}}</text>
+                                <text class="desc">{{item.goods_brief}}</text>
+                            </view>
+                            <view>
+                                <view>
+                                    <image src="{{item.avatar}}" style="width:40rpx;height:40rpx;border-radius:50%;border:1rpx solid #fff;" wx:for="{{item.headNav}}"></image>
+                                </view>
+                                <view style="display:flex;flex-direction:row;align-items:center；margin-bottom:10rpx;">
+                                    <text style="color:#f2312e;height:32rpx;line-height:32rpx;text-align:center;font-size:20rpx;border-radius:5rpx;background: #ffe6de;padding:0 10rpx;" wx:if="{{userInfo.is_people=='2'}}">佣金 ￥{{item.fx_total}}</text>
+                                    <text style="color:#f5a623;height:32rpx;line-height:32rpx;text-align:center;font-size:20rpx;border-radius:5rpx;background: #fdeaca;padding:0 10rpx;" wx:if="{{sysinfo.rap_show==1&&item.is_plugin==2}}">返 ￥{{item.plugin_price}}</text>
+                                    <text style="position:absolute;right:22rpx;font-size:21rpx;color:#6b6c6e">已售：{{item.sell_volume}}{{item.goods_unit}}</text>
+                                </view>
+                                <view style="display:flex;flex-direction:row;align-items:center">
+                                    <text style="font-size:22rpx;color:#ee0000;padding-top:10rpx;">￥</text>
+                                    <text class="price">{{item.retail_price}}</text>
+                                    <text style="font-size:21rpx;text-decoration:line-through;color:#6b6c6e;margin-left:15rpx;padding-top:10rpx;">￥{{item.retail_price}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="a-section a-new" wx:if="{{hotGoods.length>0&&sysinfo.sentiment==1}}">
+        <view class="h">
+            <view>
+                <navigator hoverClass="none" url="../hotGoods/hotGoods">
+                    <text class="txt">人气推荐</text>
+                    <i class="iconfont icon-right" style="font-size:33rpx;color:#333"></i>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{hotGoods}}" wx:key="{{item.id}}">
+                <navigator hoverClass="none" url="../goods/goods?id={{item.id}}">
+                    <image backgroundSize="cover" class="img" mode="aspectFill" src="{{item.primary_pic_url}}"></image>
+                    <view style="display:flex;flex-direction:row;">
+                        <block wx:if="{{userInfo.is_people=='2'}}">
+                            <text class="span" wx:if="{{item.is_distribution=='1'}}">佣金 ￥{{item.fx_total}}</text>
+                        </block>
+                        <text class="rap" wx:if="{{sysinfo.rap_show==1&&item.is_plugin==2}}">返 ￥{{item.plugin_price}}</text>
+                    </view>
+                    <text class="name">{{item.name}}</text>
+                    <text class="price" style="color:{{sysinfo.color}}">{{item.members_price}}</text>
+                    <text class="vip_price">非会员价:￥{{item.retail_price}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="a-section a-popular" wx:if="{{newGoods.length>0&&sysinfo.goodthing==0}}">
+        <view class="h">
+            <view>
+                <navigator hoverClass="none" url="">
+                    <text class="txt">精选好物</text>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
+                <navigator url="../goods/goods?id={{item.id}}">
+                    <image backgroundSize="cover" class="img" src="{{item.primary_pic_url}}"></image>
+                    <view class="right">
+                        <view class="text" style="justify-content: space-around;">
+                            <view>
+                                <text class="name">{{item.name}}</text>
+                                <text class="desc">{{item.goods_brief}}</text>
+                            </view>
+                            <view>
+                                <view>
+                                    <image src="{{item.avatar}}" style="width:40rpx;height:40rpx;border-radius:50%;border:1rpx solid #fff;" wx:for="{{item.headNav}}"></image>
+                                </view>
+                                <view style="display:flex;flex-direction:row;align-items:center；margin-bottom:10rpx;">
+                                    <text style="color:#f2312e;height:32rpx;line-height:32rpx;text-align:center;font-size:20rpx;border-radius:5rpx;background: #ffe6de;padding:0 10rpx;" wx:if="{{userInfo.is_people=='2'}}">佣金 ￥{{item.fx_total}}</text>
+                                    <text style="color:#f5a623;height:32rpx;line-height:32rpx;text-align:center;font-size:20rpx;border-radius:5rpx;background: #fdeaca;padding:0 10rpx;" wx:if="{{sysinfo.rap_show==1&&item.is_plugin==2}}">返 ￥{{item.plugin_price}}</text>
+                                    <text style="position:absolute;right:22rpx;font-size:21rpx;color:#6b6c6e">已售：{{item.sell_volume}}{{item.goods_unit}}</text>
+                                </view>
+                                <view style="display:flex;flex-direction:row;align-items:center">
+                                    <text style="font-size:22rpx;color:#ee0000;padding-top:10rpx;">￥</text>
+                                    <text class="price">{{item.retail_price}}</text>
+                                    <text style="font-size:21rpx;text-decoration:line-through;color:#6b6c6e;margin-left:15rpx;padding-top:10rpx;">￥{{item.retail_price}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="a-section a-new" wx:if="{{floorGoods.length>0&&sysinfo.goodthing==1}}">
+        <view class="h">
+            <view>
+                <navigator hoverClass="none" url="">
+                    <text class="txt">精选好物</text>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
+                <navigator hoverClass="none" url="../goods/goods?id={{item.id}}">
+                    <image backgroundSize="cover" class="img" mode="aspectFill" src="{{item.primary_pic_url}}"></image>
+                    <view style="display:flex;flex-direction:row;">
+                        <block wx:if="{{userInfo.is_people=='2'}}">
+                            <text class="span" wx:if="{{item.is_distribution=='1'}}">佣金 ￥{{item.fx_total}}</text>
+                        </block>
+                        <text class="rap" wx:if="{{sysinfo.rap_show==1&&item.is_plugin==2}}">返 ￥{{item.plugin_price}}</text>
+                    </view>
+                    <text class="name">{{item.name}}</text>
+                    <text class="price" style="color:{{sysinfo.color}}">{{item.members_price}}</text>
+                    <text class="vip_price">非会员价:￥{{item.retail_price}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line" wx:if="{{noData}}">更多内容 正在加载</view>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line" wx:else>Ooops! 到底了</view>
+</view>
+<view catchtouchmove="preventD" hidden="{{newC}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:6000">
+    <view class="scroll_hb" style="position:relative;margin-top:200rpx;">
+        <image mode="aspectFill" src="../../resource/images/new.png" style="width:558rpx;height:717rpx;"></image>
+        <view bindtap="goLogin" style="position:absolute;bottom:40rpx;z-index:1000;width:300rpx;height:70rpx;line-height:70rpx;color:#b4282d;border-radius:45rpx;background:#fbdc50;text-align:center">领取</view>
+    </view>
+</view>
+<view catchtouchmove="preventD" hidden="{{hongbao}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:500">
+    <view class="scroll_hb" style="position:relative">
+        <image mode="aspectFill" src="../../resource/images/hbbg.png"></image>
+        <scroll-view scrollY class="big_box">
+            <view class="forecho" wx:for="{{newCoupon}}">
+                <view class="a">
+                    <view class="one">{{item.name}}</view>
+                    <view class="two">
+                        <i class="iconfont icon-time-circle" style="font-size:20rpx;color:#333"></i>
+                        <text style="font-size:16rpx;padding-left:5rpx;">领到券当日开始{{item.expire_day}}日内有效</text>
+                    </view>
+                </view>
+                <view class="b">
+                    <view class="one">￥{{item.sub_price}}</view>
+                    <view class="two">
+              满{{item.min_price}}可用
+            </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view bindtap="know" style="position:absolute;bottom:40rpx;z-index:1000;width:300rpx;height:70rpx;line-height:70rpx;color:#b4282d;border-radius:45rpx;background:#fbdc50;text-align:center">我知道了</view>
+    </view>
+</view>
+<view catchtouchmove="preventD" hidden="{{helpTa}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:500">
+    <view class="raphelp">
+        <view class="a" style="margin-top:300rpx;">
+            <image mode="aspectFill" src="{{rap_avatar}}" style="width:115rpx;height:115rpx;border-radius:50%;margin:0 auto;"></image>
+            <view class="b" style="margin-bottom:20rpx;">在提
+        <text style="color:#b4282d">￥</text>
+                <text style="color:#b4282d;font-size:35rpx;font-weight:bold;">{{itr}}</text>
+                <text>，已提</text>
+                <text style="color:#b4282d">￥</text>
+                <text style="color:#b4282d;font-size:35rpx;font-weight:bold;">{{htr}}</text>
+            </view>
+            <progress active activeColor="#b4282d" percent="{{progress}}"></progress>
+            <button bindtap="helpTa" style="width:80%;height:80rpx;line-height:80rpx;color:#fff;background:#b4282d;margin-top:50rpx">帮TA提现，接力红包</button>
+            <i bindtap="closeRap" class="iconfont icon-close" style="position:absolute;right:20rpx;top:20rpx;font-size:35rpx;"></i>
+        </view>
+    </view>
+</view>
+<view catchtouchmove="preventD" hidden="{{backRed}}" style="width:{{windowWidth}}px;height:{{windowHeight}}px;background:rgba(0,0,0,0.3);position:fixed;top:0;left:0;z-index:500">
+    <view class="raphelp">
+        <view class="a" style="margin-top:200rpx;">
+            <image mode="aspectFill" src="{{rap_avatar}}" style="width:115rpx;height:115rpx;border-radius:50%;margin:0 auto;"></image>
+            <view class="b" style="font-size:28rpx;">谢谢你帮我助力提现
+        <text style="color:#b4282d;font-weight:bold;">{{need_price}}元</text>
+            </view>
+            <view class="c">
+        送你一个接力红包
+      </view>
+            <view style="position:relative">
+                <image mode="widthFix" src="../../resource/images/backRed.png" style="width:300rpx;"></image>
+                <view style="position:absolute;width:100%;top:50rpx;text-align:center">
+                    <text style="font-weight:bold;font-size:32rpx;color:#b4282d">￥</text>
+                    <text style="font-weight:bold;font-size:46rpx;color:#b4282d">{{random}}</text>
+                </view>
+            </view>
+            <button bindtap="saveRed" style="width:80%;height:80rpx;line-height:80rpx;color:#fff;background:#b4282d;margin-top:50rpx">存入我的账户</button>
+            <i bindtap="closeRap" class="iconfont icon-close" style="position:absolute;right:20rpx;top:20rpx;font-size:35rpx;"></i>
+        </view>
+    </view>
+</view>
+<template is="share" data></template>
+<import src="../template/footer.wxml"></import>
+<template is="footer" data="{{tabbar:tabbar,curIdx:curIdx,tabColor:tabColor}}"></template>

@@ -1,0 +1,92 @@
+.swiper {
+    width: 100%;
+    position: relative;
+    padding-bottom: 50%;
+    height: 430rpx;
+    background: #f4f4f4;
+}
+
+button::after {
+    content: none;
+}
+
+.swiper swiper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper .a {
+    width: 100%;
+    height: 430rpx;
+}
+
+.swiper image {
+    width: 100%;
+    height: 100%;
+}
+
+.stars-wrapper {
+    padding: 0;
+}
+
+.star-full {
+    color: #ffcb00;
+}
+
+.star-empty {
+    color: #cbcbcb;
+}
+
+.content {
+    width: 100%;
+    height: auto;
+    font-size: 0;
+    background: #fff;
+}
+
+.scroll_hb {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 150rpx;
+}
+
+.scroll_hb image {
+    width: 650rpx;
+    height: 784rpx;
+}
+
+.title {
+    width: 100%;
+    padding: 20rpx 30rpx;
+    background: #fff;
+    margin-top: 20rpx;
+    position: relative;
+}
+
+.a {
+    font-size: 30rpx;
+}
+
+.b {
+    position: absolute;
+    right: 0;
+    top: 40rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 25rpx 0 0 25rpx;
+    font-size: 24rpx;
+}
+
+.c {
+    position: absolute;
+    right: 0;
+    top: 20rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 25rpx 0 0 25rpx;
+    font-size: 24rpx;
+}

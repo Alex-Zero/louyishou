@@ -1,0 +1,39 @@
+<view class="info">
+    <view class="cate">
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==10?'hover':''}}" data-sid="10">
+      全部
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==1?'hover':''}}" data-sid="1">
+      待审核
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==0?'hover':''}}" data-sid="0">
+      已打款
+    </view>
+        <view bindtap="catClick" class="cate-item {{currentTabsIndex==3?'hover':''}}" data-sid="3">
+      无效
+    </view>
+    </view>
+    <view class="blank"></view>
+    <view>
+        <view class="info-no" wx:if="{{orderList==''}}">暂无数据</view>
+        <block wx:else>
+            <view class="info-content" wx:for="{{orderList}}">
+                <view class="info-label flex-row">
+                    <view class="info-left">
+                        <view class="info-up" wx:if="{{item.order_status==1}}">{{item.log}}{{item.total}}
+              </view>
+                        <view class="info-up" wx:elif="{{item.order_status==7}}">{{item.log}}{{item.total}}
+              </view>
+                        <view class="info-up" wx:else>{{item.log}}<text style="color:#b4282d">{{item.total}}</text>
+                        </view>
+                        <view class="info-down">{{item.time}}</view>
+                    </view>
+                    <view class="info-right" wx:if="{{item.status==1}}">待付款</view>
+                    <view class="info-right" wx:if="{{item.status==2}}">待审核</view>
+                    <view class="info-right" wx:if="{{item.status==0}}">已打款</view>
+                    <view class="info-right" wx:if="{{item.status==3}}">无效</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

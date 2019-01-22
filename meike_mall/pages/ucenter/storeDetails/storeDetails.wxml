@@ -1,0 +1,42 @@
+<view class="container">
+    <view class="one">
+        <view class="left">
+            <view class="a">
+                <i class="iconfont icon-adduser" style="font-size:75rpx;margin-right:10rpx;"></i>
+                <text>今日新增</text>
+            </view>
+            <view class="b">5000
+        <text style="font-size:30rpx;">人</text>
+            </view>
+            <navigator class="c" url="../storeFans/storeFans">查看详情</navigator>
+        </view>
+        <view class="right">
+            <view class="a">
+                <i class="iconfont icon-eye" style="font-size:75rpx;margin-right:10rpx;"></i>
+                <text>访问量</text>
+            </view>
+            <view class="b">8000</view>
+        </view>
+    </view>
+    <view class="two">
+        <view class="left">
+            <view class="a">
+                <i class="iconfont icon-linechart" style="font-size:75rpx;margin-right:10rpx;"></i>
+                <text>销售额</text>
+            </view>
+            <view class="b">5000
+        <text style="font-size:30rpx;">元</text>
+            </view>
+            <view class="c">查看详情</view>
+        </view>
+        <view class="right">
+            <view class="d" style="margin-bottom:20rpx;">
+                <view class="a">今日销售额</view>
+            </view>
+            <view class="d">
+                <view class="e">交易记录</view>
+                <view class="f">交易记录查询</view>
+            </view>
+        </view>
+    </view>
+</view>

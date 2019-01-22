@@ -1,0 +1,16 @@
+<view class="content">
+    <view class="goods-manager" wx:for="{{fansList}}">
+        <view class="goods-manager-left">
+            <view class="brand">
+                <image src="{{item.fans_avatar}}"></image>
+            </view>
+            <text style="font-size: 28rpx;">{{item.fans_name}}</text>
+        </view>
+        <view>
+            <view>
+                <text class="goods-manager-right">{{item.ctime}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="info-no" wx:if="{{fansList.length==0}}">暂无粉丝</view>
+</view>

@@ -1,0 +1,64 @@
+<template name="AI-exit">
+    <view style="position:fixed;right:31.25rpx;bottom:300rpx;">
+        <form bindsubmit="formSubmitAI" reportSubmit="true">
+            <button formType="submit" style="background:#fff;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;">
+                <i class="iconfont icon-fullscreen-exit" style="font-size:52rpx;color:#707070"></i>
+            </button>
+        </form>
+    </view>
+</template>
+<template name="AI">
+    <view style="position:fixed;right:31.25rpx;bottom:200rpx;">
+        <form bindsubmit="formSubmitAI" reportSubmit="true">
+            <button formType="submit" style="background:#fff;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;">
+                <i class="iconfont icon-fullscreen" style="font-size:52rpx;color:#707070"></i>
+            </button>
+        </form>
+    </view>
+</template>
+<template name="share">
+    <view style="position:fixed;right:31.25rpx;bottom:300rpx;">
+        <form bindsubmit="formSubmit" reportSubmit="true">
+            <button formType="submit" openType="share" style="background:#fff;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);width:85rpx;height:85rpx;border-radius:50%;padding:0;line-height:85rpx;">
+                <i class="iconfont icon-share" style="font-size:52rpx;color:#707070"></i>
+            </button>
+        </form>
+    </view>
+</template>
+<template name="NULL1">
+    <view>
+        <image src="width:300rpx;height:300rpx;"></image>
+    </view>
+</template>
+<template name="NULL">
+    <view>
+        <image src="width:300rpx;height:300rpx;"></image>
+    </view>
+</template>
+<template name="allStars">
+    <text class="{{num<=stars?'star-full':'star-empty'}}" wx:for="{{[1,2,3,4,5]}}" wx:for-item="num" wx:key="star"> ★ </text>
+</template>
+<template name="stars">
+    <view class="stars-wrapper">
+        <text class="{{num<=stars?'star-full':'star-empty'}}" wx:for="{{[1,2,3,4,5]}}" wx:for-item="num" wx:key="star"> ★ </text>
+        <text>{{stars}}分 </text>
+    </view>
+</template>
+<template name="swiper">
+    <swiper autoplay="true" circular="true" duration="600" indicatorActiveColor="#fff" indicatorColor="#ccc" indicatorDots="true" interval="8000">
+        <swiper-item wx:for="{{slide}}" wx:key="{{index}}">
+            <navigator class="a" url="{{item.topicPath}}" wx:if="{{item.type==1}}">
+                <image mode="aspectFill" src="{{item.image_url}}"></image>
+            </navigator>
+            <navigator class="a" url="{{item.goodsPath}}" wx:if="{{item.type==2}}">
+                <image mode="aspectFill" src="{{item.image_url}}"></image>
+            </navigator>
+            <image bindtap="mina" data-index="{{item.id}}" mode="aspectFill" src="{{item.image_url}}" wx:if="{{item.type==3}}"></image>
+            <image mode="aspectFill" src="{{item.image_url}}" wx:if="{{item.type==4}}"></image>
+            <navigator class="a" url="{{item.path}}" wx:if="{{item.type==5}}">
+                <image mode="aspectFill" src="{{item.image_url}}"></image>
+            </navigator>
+            <image mode="aspectFill" src="{{item.image_url}}" wx:if="{{item.type==0}}"></image>
+        </swiper-item>
+    </swiper>
+</template>

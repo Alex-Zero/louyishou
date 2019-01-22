@@ -1,0 +1,108 @@
+<view class="container">
+    <view class="content">
+        <view class="version">
+            <view class="version-title">
+                <text class="title-name">美客CMS</text>
+                <text class="version-text">v0.0.1</text>
+                <text class="version-text">内测</text>
+            </view>
+            <view bindtap="toggleLog">
+                <text class="version-log-link" wx:if="{{!showLog}}">更新日志</text>
+                <text class="version-log-link" wx:else>简介</text>
+            </view>
+        </view>
+        <view class="describe" wx:if="{{!showLog}}">
+            <text class="desc-title">简介</text>
+            <view class="desc-list">
+                <text class="desc-list-item">官网：https://xtshow.cc</text>
+            </view>
+            <text class="desc-content">美客CMS给更多行业提供商城解决方案，一站式服务</text>
+        </view>
+        <view class="log-list" wx:else>
+            <view class="describe">
+                <view class="desc-title">
+                    <text class="desc-v">v1.0.12 正式版</text>
+                    <text class="desc-time">2018.11.8</text>
+                </view>
+                <text class="desc-content">修复BUG</text>
+                <text class="desc-content">优化完善</text>
+                <view class="desc-list">
+                    <text class="desc-list-item">修复在订单列表里重新付款，付款后订单状态不更新</text>
+                    <text class="desc-list-item">修复申请合伙人等级计算问题</text>
+                    <text class="desc-list-item">修复添加商品到购物车失败问题</text>
+                    <text class="desc-list-item">修复物流查询失败问题</text>
+                    <text class="desc-list-item">增加前端商品销量显示</text>
+                </view>
+            </view>
+            <view class="describe">
+                <view class="desc-title">
+                    <text class="desc-v">v1.0.1 正式版</text>
+                    <text class="desc-time">2018.9.19</text>
+                </view>
+                <text class="desc-content">修复BUG</text>
+                <text class="desc-content">优化完善</text>
+                <view class="desc-list">
+                    <text class="desc-list-item">增加商品排序</text>
+                    <text class="desc-list-item">修复分销金额显示问题</text>
+                    <text class="desc-list-item">修复购物车问题</text>
+                    <text class="desc-list-item">修复安卓wxParse不兼容问题</text>
+                    <text class="desc-list-item">调整个人中心UI</text>
+                    <text class="desc-list-item">个人中心增加下拉刷新功能</text>
+                    <text class="desc-list-item">嵌入接力购插件</text>
+                </view>
+            </view>
+            <view class="describe">
+                <view class="desc-title">
+                    <text class="desc-v">v0.0.6 内测版</text>
+                    <text class="desc-time">2018.9.19</text>
+                </view>
+                <text class="desc-content">修复BUG</text>
+                <text class="desc-content">优化完善</text>
+                <view class="desc-list">
+                    <text class="desc-list-item">修复分销金额显示问题</text>
+                    <text class="desc-list-item">修复购物车问题</text>
+                    <text class="desc-list-item">修复安卓wxParse不兼容问题</text>
+                </view>
+            </view>
+            <view class="describe">
+                <view class="desc-title">
+                    <text class="desc-v">v0.0.3 内测版</text>
+                    <text class="desc-time">2018.9.8</text>
+                </view>
+                <text class="desc-content">修复BUG</text>
+                <text class="desc-content">优化完善</text>
+                <view class="desc-list">
+                    <text class="desc-list-item">增加专题留言</text>
+                </view>
+            </view>
+            <view class="describe">
+                <view class="desc-title">
+                    <text class="desc-v">v0.0.2 内测版</text>
+                    <text class="desc-time">2018.9.7</text>
+                </view>
+                <text class="desc-content">修复BUG</text>
+                <text class="desc-content">优化完善</text>
+                <view class="desc-list">
+                    <text class="desc-list-item">修复分享首页不能完成粉丝绑定</text>
+                    <text class="desc-list-item">优化专题商品文字显示问题</text>
+                    <text class="desc-list-item">自定义选择首页显示专题、品牌、新品、热门显示数量</text>
+                </view>
+            </view>
+            <view class="describe">
+                <view class="desc-title">
+                    <text class="desc-v">v0.0.1 内测版</text>
+                    <text class="desc-time">2018.9.7</text>
+                </view>
+                <text class="desc-content">开启内测</text>
+            </view>
+        </view>
+    </view>
+    <view class="footer">
+        <view class="footer-lanshan">
+            <image src="/images/more/lanshan.png"></image>
+            <text>MeikeTeam</text>
+        </view>
+        <text>美客团队 · 清晨文化传媒有限公司</text>
+        <text>Copyright @ 2016 All Rights Reserved</text>
+    </view>
+</view>

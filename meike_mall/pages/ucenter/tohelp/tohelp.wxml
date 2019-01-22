@@ -1,0 +1,30 @@
+<import src="../../common/common.wxml"></import>
+<view class="orders">
+    <block wx:for="{{orderList}}" wx:key="{{item.id}}">
+        <navigator class="order" url="../orderDetail/orderDetail?order_sn={{item.order_sn}}">
+            <view class="h">
+                <view class="l">订单编号：{{item.order_sn}}</view>
+            </view>
+            <view class="goods" wx:for="{{item.goodsList}}" wx:for-item="gitem" wx:key="{{gitem.id}}">
+                <view class="img">
+                    <image src="{{gitem.goods_image}}"></image>
+                </view>
+                <view class="info">
+                    <text class="name">{{gitem.goods_name}}</text>
+                    <text style="height:33rpx;font-size:28rpx;line-height:33rpx;">{{gitem.pay_attr}}</text>
+                    <text class="number">共{{gitem.number}}件商品</text>
+                </view>
+                <view class="status"></view>
+            </view>
+        </navigator>
+        <view class="item-c">
+            <view class="l">实付：
+        <text class="cost">￥{{item.actual_price}}</text>
+            </view>
+            <view class="r">
+                <view bindtap="buttonClick" class="btn active" data-attr="{{item.pay_attr}}" data-id="{{index}}" data-num="{{item.pay_num}}" data-ordersn="{{item.order_sn}}" data-pid="{{item.actual_price}}" data-sid="help" data-tid="{{item.pay_name}}">分享好友助力{{clock}} {{micro_second}}</view>
+            </view>
+        </view>
+    </block>
+    <template is="NULL" data wx:if="{{orderList==''}}"></template>
+</view>
